@@ -1,0 +1,1 @@
+# plugins-easy-share-solution
