@@ -63,7 +63,7 @@
         };
 
         var getTweetURL = function(text, extra, via) {
-            var url = 'https://twitter.com/intent/tweet?text=';
+            var url = 'https://x.com/intent/tweet?text=';
             url += encodeURIComponent(text);
 
            if (extra)

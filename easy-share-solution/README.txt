@@ -1,13 +1,15 @@
 === Easy share solution ===
 Contributors: nalam
 Donate link: http://wpthemespace.com/donation/
-Tags: share social, social sharing, share buttons, social media share, widget social , facebook share, twitter share,twitter,google,google-plus,pinterest,pinit,buffer,social share,share icon,blog share
+Tags: social-sharing, share-buttons, social-media, social-widget, facebook
 Requires at least: 5.0
-Version:      1.1.0
-Tested up to: 6.6
+Requires PHP: 7.0
+Stable tag: trunk
+Tested up to: 6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+Easy Share Solution is a powerful social sharing plugin that enables custom share buttons with multiple positions and styles for WordPress sites.
 
 == Description ==
 ##Easy share solution is Nice and awesome wordpress share plugin
@@ -118,6 +120,12 @@ e.g.
 4. Rounded social icons
 
 == Changelog ==
+= 1.1.1 =
+* Twitter to X.com convert icon and link
+* Added new style
+= 1.0.10 =
+* Add Instagram Share
+* Fixed security issue
 = 1.0.10 =
 * Add Instagram Share
 * Fixed security issue

@@ -32,6 +32,7 @@
 
         var templates = {
             Twitter: 'https://twitter.com/intent/tweet?url={url}&text={title}',
+            x: 'https://x.com/intent/tweet?url={url}&text={title}',
             Pinterest: 'https://www.pinterest.com/pin/create/button/?media={image}&url={url}&description={text}',
             Facebook: 'https://www.facebook.com/sharer.php?s=100&p[title]={title}&p[summary]={text}&p[url]={url}&p[images][0]={image}',
             Vk: 'https://vkontakte.ru/share.php?url={url}&title={title}&description={text}&image={image}&noparse=true',

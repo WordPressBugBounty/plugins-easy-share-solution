@@ -29,7 +29,31 @@
   }
 }
 */
- 
+ @font-face {
+   font-family: 'icomoon';
+   src: url('../font/icomoon.eot?75p0ri');
+   src: url('../font/icomoon.eot?75p0ri#iefix') format('embedded-opentype'),
+     url('../font/icomoon.ttf') format('truetype'),
+     url('../font/icomoon.woff') format('woff'),
+     url('../font/icomoon.svg?75p0ri#icomoon') format('svg');
+   font-weight: normal;
+   font-style: normal;
+   font-display: block;
+ }
+
+ /* [class^="icon-"],
+ [class*=" icon-"] {
+   font-family: 'icomoon' !important;
+   speak: never;
+   font-style: normal;
+   font-weight: normal;
+   font-variant: normal;
+   text-transform: none;
+   line-height: 1;
+
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+ } */
  [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
@@ -103,4 +127,11 @@
 .icon-more:before { content: '\e823'; } /* '' */
 .icon-Instagram:before {
   content: '\e824';
+}
+.icon-x {
+  font-family: 'icomoon' !important;
+}
+.icon-x:before {
+  font-family: 'icomoon' !important;
+  content: "\e900";
 }

@@ -645,6 +645,11 @@ span.baby-count-bottom.counter {
   min-width: 30px;
   position: absolute;
 }
+#bshare-social button.bshare-x.share.s_x {
+  text-transform: uppercase !important;
+  text-align: right;
+  padding-right: 50px;
+}
 span.baby-count-bottom {
   background-color: #ccc;
   border-radius: 2px;
@@ -833,4 +838,54 @@ a.text-tweet:hover {
     top: 12%;
     width: 90%;
   }
+}
+.easy-share-x {
+  background: #000;
+  color: #fff;
+}
+
+.easy-share-x:hover {
+  background: #141414;
+}
+/*x (formerly twitter) button style*/
+#bshare-social button.bshare-x,
+#bshare_widget button.bshare-x,
+#my_popup_wrapper button.bshare-x,
+#bshare-social button.bshare-Aim,
+#bshare_widget button.bshare-Aim,
+#my_popup_wrapper button.bshare-Aim {
+  background: #000000 none repeat scroll 0 0;
+}
+#bshare-social button.bshare-x:hover,
+#bshare_widget button.bshare-x:hover,
+#my_popup_wrapper button.bshare-x:hover,
+#bshare_widget button.bshare-Aim:hover,
+#bshare-social button.bshare-Aim:hover,
+#my_popup_wrapper button.bshare-Aim:hover {
+  background: #141414 none repeat scroll 0 0;
+}
+/*X button style*/
+#bshare-social button.bshare-x,
+#bshare_widget button.bshare-x,
+#my_popup_wrapper button.bshare-x {
+  background: #000000 none repeat scroll 0 0;
+  color: #fff;
+}
+
+#bshare-social button.bshare-x:hover,
+#bshare_widget button.bshare-x:hover,
+#my_popup_wrapper button.bshare-x:hover {
+  background: #141414 none repeat scroll 0 0;
+}
+
+.bshare-X {
+    background: #000 !important;
+}
+.bshare-X:hover {
+    background: #141414 !important;
+}
+svg.bxicon {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
 }

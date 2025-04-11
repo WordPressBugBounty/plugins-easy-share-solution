@@ -77,7 +77,7 @@ class born_share_widget extends WP_Widget
 		<div id="bshare_widget" class="shar-button-widget <?php if ($btnType == 'button_two') : ?>widget-round-btn<?php endif; ?>">
 			<?php if ($sharebtn == 'share_one') : ?>
 				<button class="button-popup share bshare-Facebook s_Facebook"><i class="icon-Facebook"></i></button>
-				<button class="button-popup share bshare-Twitter s_Twitter"><i class="icon-Twitter"></i></button>
+				<button class="button-popup share bshare-x s_x"><i class="icon-x"></i></button>
 				<button class="button-popup share bshare-Linkedin s_Linkedin"><i class="icon-Linkedin"></i></button>
 				<button class="button-popup share bshare-Pinterest s_Pinterest"><i class="icon-Pinterest"></i></button>
 				<button class="button-popup share bshare-Instagram s_Instagram"><i class="icon-Instagram"></i></button>
@@ -85,7 +85,7 @@ class born_share_widget extends WP_Widget
 			<?php endif; ?>
 			<?php if ($sharebtn == 'share_two') : ?>
 				<button class="button-popup share bshare-Facebook s_Facebook"><i class="icon-Facebook"></i></button>
-				<button class="button-popup share bshare-Twitter s_Twitter"><i class="icon-Twitter"></i></button>
+				<button class="button-popup share bshare-x s_x"><i class="icon-x"></i></button>
 				<button class="button-popup share bshare-Linkedin s_Linkedin"><i class="icon-Linkedin"></i></button>
 				<button class="button-popup share bshare-Instagram s_Instagram"><i class="icon-Instagram"></i></button>
 				<button class="button-popup share bshare-Pinterest s_Pinterest"><i class="icon-Pinterest"></i></button>
@@ -104,7 +104,7 @@ class born_share_widget extends WP_Widget
 			<?php endif; ?>
 			<?php if ($sharebtn == 'share_three') : ?>
 				<button class="button-popup share bshare-Facebook s_Facebook"><i class="icon-Facebook"></i></button>
-				<button class="button-popup share bshare-Twitter s_Twitter"><i class="icon-Twitter"></i></button>
+				<button class="button-popup share bshare-x s_x"><i class="icon-x"></i></button>
 				<button class="button-popup share bshare-Linkedin s_Linkedin"><i class="icon-Linkedin"></i></button>
 				<button class="button-popup share bshare-Instagram s_Instagram"><i class="icon-Instagram"></i></button>
 

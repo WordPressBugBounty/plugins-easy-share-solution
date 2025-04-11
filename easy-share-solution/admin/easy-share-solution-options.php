@@ -94,7 +94,7 @@ if (!class_exists('easy_share_solution_options')) :
                         'default' => 'Facebook',
                         'options' => array(
                             'Facebook'   => 'Facebook',
-                            'Twitter'   => 'Twitter',
+                            'x'   => 'Twitter',
                             'Instagram'  => 'Instagram ',
                             'Buffer'  => 'Buffer',
                             'Linkedin'  => 'Linkedin',
@@ -135,7 +135,7 @@ if (!class_exists('easy_share_solution_options')) :
                         'default' => 'Twitter',
                         'options' => array(
                             'Facebook'   => 'Facebook',
-                            'Twitter'   => 'Twitter',
+                            'x'   => 'Twitter',
                             'Instagram'  => 'Instagram ',
                             'Buffer'  => 'Buffer',
                             'Linkedin'  => 'Linkedin',
@@ -176,7 +176,7 @@ if (!class_exists('easy_share_solution_options')) :
                         'default' => 'Instagram',
                         'options' => array(
                             'Facebook'   => 'Facebook',
-                            'Twitter'   => 'Twitter',
+                            'x'   => 'Twitter',
                             'Instagram'  => 'Instagram',
                             'Buffer'  => 'Buffer',
                             'Linkedin'  => 'Linkedin',
@@ -217,7 +217,7 @@ if (!class_exists('easy_share_solution_options')) :
                         'default' => 'Linkedin',
                         'options' => array(
                             'Facebook'   => 'Facebook',
-                            'Twitter'   => 'Twitter',
+                            'x'   => 'Twitter',
                             'Instagram'  => 'Instagram ',
                             'Buffer'  => 'Buffer',
                             'Linkedin'  => 'Linkedin',
@@ -258,7 +258,7 @@ if (!class_exists('easy_share_solution_options')) :
                         'default' => 'Pinterest',
                         'options' => array(
                             'Facebook'   => 'Facebook',
-                            'Twitter'   => 'Twitter',
+                            'x'   => 'Twitter',
                             'Instagram'  => 'Instagram',
                             'Buffer'  => 'Buffer',
                             'Linkedin'  => 'Linkedin',
@@ -299,7 +299,7 @@ if (!class_exists('easy_share_solution_options')) :
                         'default' => 'noselected',
                         'options' => array(
                             'Facebook'   => 'Facebook',
-                            'Twitter'   => 'Twitter',
+                            'x'   => 'Twitter',
                             'Instagram'  => 'Instagram',
                             'Buffer'  => 'Buffer',
                             'Linkedin'  => 'Linkedin',
@@ -341,7 +341,7 @@ if (!class_exists('easy_share_solution_options')) :
                         'default' => 'noselect',
                         'options' => array(
                             'Facebook'   => 'Facebook',
-                            'Twitter'   => 'Twitter',
+                            'x'   => 'Twitter',
                             'Instagram'  => 'Instagram',
                             'Buffer'  => 'Buffer',
                             'Linkedin'  => 'Linkedin',

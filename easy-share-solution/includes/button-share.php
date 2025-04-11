@@ -34,7 +34,7 @@ if ($position_four == 'four') {
 				$other = get_option('easy_share_solution_other_option');
 			}
 			$name_one = (isset($options['social_one'])) ? $options['social_one'] : 'Facebook';
-			$name_two = (isset($options['social_two'])) ? $options['social_two'] : 'Twitter';
+			$name_two = (isset($options['social_two'])) ? $options['social_two'] : 'x';
 			$name_three = (isset($options['social_three'])) ? $options['social_three'] : 'Instagram';
 			$name_four = (isset($options['social_four'])) ? $options['social_four'] : 'Linkedin';
 			$name_five = (isset($options['social_five'])) ? $options['social_five'] : 'Pinterest';
@@ -172,8 +172,11 @@ if (!function_exists('easy_share_solution_buton_set')) :
 			<div class="shar-button-set <?php if ($pop_btn == 'round') : ?>round-icons<?php endif; ?>">
 				<div class="share-btnall">
 					<button class="button-popup share bshare-Facebook s_Facebook"><i class="icon-Facebook"></i></button>
-					<button class="button-popup share bshare-Twitter s_Twitter"><i class="icon-Twitter"></i></button>
+					<button class="button-popup share bshare-x s_x">
+					<i class="icon-x"></i>
+					</button>
 					<button class="button-popup share bshare-Instagram s_Instagram"><i class="icon-Instagram"></i></button>
+					<button class="button-popup share bshare-x s_x"><i class="icon-x"></i></button>
 					<button class="button-popup share bshare-Tumblr s_Tumblr"><i class="icon-Tumblr"></i></button>
 					<button class="button-popup share bshare-Linkedin s_Linkedin"><i class="icon-Linkedin"></i></button>
 					<button class="button-popup share bshare-Pinterest s_Pinterest"><i class="icon-Pinterest"></i></button>
@@ -227,7 +230,7 @@ if (!function_exists('born_share_side')) :
 		}
 
 		$name_one = (isset($options['social_one'])) ? $options['social_one'] : 'Facebook';
-		$name_two = (isset($options['social_two'])) ? $options['social_two'] : 'Twitter';
+		$name_two = (isset($options['social_two'])) ? $options['social_two'] : 'x';
 		$name_three = (isset($options['social_three'])) ? $options['social_three'] : 'Instagram';
 		$name_four = (isset($options['social_four'])) ? $options['social_four'] : 'Linkedin';
 		$name_five = (isset($options['social_five'])) ? $options['social_five'] : 'Pinterest';
@@ -252,7 +255,8 @@ if (!function_exists('born_share_side')) :
 			<div id="bshare-social" class="baby-sideshare share-left <?php if ($select_count == 'yes') : ?>count_show<?php endif; ?> <?php if ($btn_type == 'round_icon') : ?>round-icons<?php endif; ?>" style="top:<?php echo esc_attr($btn_top_set); ?>%">
 				<div class="count-set-left <?php if ($btn_type == 'icon' || $btn_type == 'round_icon') : ?>text-left<?php endif; ?>">
 					<button class="tottal-count bshare-<?php echo esc_attr($name_one); ?> share s_<?php echo esc_attr($name_one); ?>" type="button">
-						<?php echo esc_html($name_one); ?>&nbsp; <i class="icon-<?php echo esc_attr($name_one); ?>"></i>
+						<?php echo esc_html($name_one); ?>&nbsp;
+						<i class="icon-<?php echo esc_attr($name_one); ?>"></i>
 						<?php if ($select_count !== 'no') : ?>
 							<?php if ($name_one == 'Facebook' || $name_one == 'Linkedin' || $name_one == 'Pinterest' || $name_one == 'Tumblr'  || $name_one == 'Myworld' || $name_one == 'Vk' || $name_one == 'Ok') : ?>
 								<!-- <span class="baby-count-left counter c_<?php echo $name_one; ?>"></span> -->
@@ -263,7 +267,8 @@ if (!function_exists('born_share_side')) :
 				</div>
 				<div class="count-set-left t-left <?php if ($btn_type == 'icon' || $btn_type == 'round_icon') : ?>text-left<?php endif; ?>">
 					<button class="bshare-<?php echo esc_attr($name_two); ?> share s_<?php echo esc_attr($name_two); ?>" type="button">
-						<?php echo esc_html($name_two); ?>&nbsp; <i class="icon-<?php echo esc_attr($name_two); ?>"></i>
+						<?php echo esc_html($name_two); ?>&nbsp;
+						<i class="icon-<?php echo esc_attr($name_two); ?>"></i>
 						<?php if ($select_count !== 'no') : ?>
 							<?php if ($name_two == 'Facebook' || $name_two == 'Linkedin' || $name_two == 'Pinterest' || $name_two == 'Tumblr'  || $name_two == 'Myworld' || $name_two == 'Vk' || $name_two == 'Ok') : ?>
 								<!-- <span class="baby-count-left counter c_<?php echo $name_two; ?>"></span> -->
@@ -312,325 +317,323 @@ if (!function_exists('born_share_side')) :
 								<?php endif; ?>
 							<?php endif; ?>
 						</button><!-- button six-->
-					</div>
-				<?php endif; ?>
-				<?php if ($name_seven !== 'noselect') : ?>
-					<div class="count-set-left t-left <?php if ($btn_type == 'icon' || $btn_type == 'round_icon') : ?>text-left<?php endif; ?>">
-						<button class="bshare-<?php echo esc_attr($name_seven); ?> share s_<?php echo esc_attr($name_seven); ?>" type="button">
-							<?php echo esc_html($name_seven); ?>&nbsp; <i class="icon-<?php echo esc_attr($name_seven); ?>"></i>
-							<?php if ($select_count !== 'no') : ?>
-								<?php if ($name_seven == 'Facebook' || $name_seven == 'Linkedin' || $name_seven == 'Pinterest' || $name_seven == 'Tumblr'  || $name_seven == 'Myworld' || $name_seven == 'Vk' || $name_seven == 'Ok') : ?>
-									<!-- <span class="baby-count-left counter c_<?php echo $name_seven; ?>"></span> -->
+					<?php endif; ?>
+					<?php if ($name_seven !== 'noselect') : ?>
+						<div class="count-set-left t-left <?php if ($btn_type == 'icon' || $btn_type == 'round_icon') : ?>text-left<?php endif; ?>">
+							<button class="bshare-<?php echo esc_attr($name_seven); ?> share s_<?php echo esc_attr($name_seven); ?>" type="button">
+								<?php echo esc_html($name_seven); ?>&nbsp; <i class="icon-<?php echo esc_attr($name_seven); ?>"></i>
+								<?php if ($select_count !== 'no') : ?>
+									<?php if ($name_seven == 'Facebook' || $name_seven == 'Linkedin' || $name_seven == 'Pinterest' || $name_seven == 'Tumblr'  || $name_seven == 'Myworld' || $name_seven == 'Vk' || $name_seven == 'Ok') : ?>
+										<!-- <span class="baby-count-left counter c_<?php echo $name_seven; ?>"></span> -->
+									<?php endif; ?>
 								<?php endif; ?>
-							<?php endif; ?>
-						</button><!-- button seven-->
-					</div>
-				<?php endif; ?>
-				<?php if ($all_sharebtn == 'yes') : ?>
-					<div class="count-set-left t-left <?php if ($btn_type == 'icon' || $btn_type == 'round_icon') : ?>text-left<?php endif; ?>">
-						<button class="my_popup_open"><?php esc_html_e('All share', 'easy-share-solution'); ?>&nbsp;<i class="icon-more"></i></button>
-					</div><!-- popup button -->
-				<?php endif; ?>
-				<?php if ($show_hide == 'yes') : ?>
-					<div class="share_hide_show left_hide_show">
-						<i class="icon-share"></i>
-					</div><!-- share icon -->
-				<?php endif; ?>
-			</div> <!-- left side share button -->
-		<?php }
-		if ($position_two = !empty($options['btn_position'])) {
-			$position_two = $options['btn_position'];
-		}
-		if (!empty($position_two['two'])) {
-		?>
-			<div id="bshare-social" class="baby-sideshare share-right <?php if ($select_count == 'yes') : ?>count_show<?php endif; ?> <?php if ($btn_type == 'round_icon') : ?>round-icons<?php endif; ?>" style="top:<?php echo $btn_top_set; ?>%">
-				<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-					<div class="right-hover">
-						<button class="tottal-count bshare-<?php echo esc_attr($name_one); ?> share s_<?php echo esc_attr($name_one); ?>" type="button">
-							<i class="icon-<?php echo esc_attr($name_one); ?>"></i>&nbsp;<?php echo esc_html($name_one); ?>
-						</button><!-- button one-->
-						<?php if ($select_count !== 'no') : ?>
-							<?php if ($name_one == 'Facebook' || $name_one == 'Linkedin' || $name_one == 'Pinterest' || $name_one == 'Tumblr'  || $name_one == 'Myworld' || $name_one == 'Vk' || $name_one == 'Ok') : ?>
-								<!-- <span class="baby-count-right counter c_<?php echo $name_one; ?>"></span> -->
-							<?php endif; ?>
-						<?php endif; ?>
-
-					</div>
-				</div>
-				<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-					<div class="right-hover">
-						<button class="tottal-count bshare-<?php echo esc_attr($name_two); ?> share s_<?php echo esc_attr($name_two); ?>" type="button">
-							<i class="icon-<?php echo esc_attr($name_two); ?>"></i>&nbsp;<?php echo esc_html($name_two); ?>
-						</button><!-- button two-->
-						<?php if ($select_count !== 'no') : ?>
-							<?php if ($name_two == 'Facebook' || $name_two == 'Linkedin' || $name_two == 'Pinterest' || $name_two == 'Tumblr'  || $name_two == 'Myworld' || $name_two == 'Vk' || $name_two == 'Ok') : ?>
-								<!-- <span class="baby-count-right counter c_<?php echo $name_two; ?>"></span> -->
-							<?php endif; ?>
-						<?php endif; ?>
-
-					</div>
-				</div>
-				<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-					<div class="right-hover">
-						<button class="tottal-count bshare-<?php echo esc_attr($name_three); ?> share s_<?php echo esc_attr($name_three); ?>" type="button">
-							<i class="icon-<?php echo esc_attr($name_three); ?>"></i>&nbsp;<?php echo esc_html($name_three); ?>
-						</button><!-- button three-->
-						<?php if ($select_count !== 'no') : ?>
-							<?php if ($name_three == 'Facebook' || $name_three == 'Linkedin' || $name_three == 'Pinterest' || $name_three == 'Tumblr'  || $name_three == 'Myworld' || $name_three == 'Vk') : ?>
-								<!-- <span class="baby-count-right counter c_<?php echo $name_three; ?>"></span> -->
-							<?php endif; ?>
-						<?php endif; ?>
-					</div>
-				</div>
-				<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-					<div class="right-hover">
-						<button class="tottal-count bshare-<?php echo esc_attr($name_four); ?> share s_<?php echo esc_attr($name_four); ?>" type="button">
-							<i class="icon-<?php echo esc_attr($name_four); ?>"></i>&nbsp;<?php echo esc_html($name_four); ?>
-						</button><!-- button four-->
-						<?php if ($select_count !== 'no') : ?>
-							<?php if ($name_four == 'Facebook' || $name_four == 'Linkedin' || $name_four == 'Pinterest' || $name_four == 'Tumblr'  || $name_four == 'Myworld' || $name_four == 'Vk' || $name_four == 'Ok') : ?>
-								<!-- <span class="baby-count-right counter c_<?php echo $name_four; ?>"></span> -->
-							<?php endif; ?>
-						<?php endif; ?>
-					</div>
-				</div>
-				<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-					<div class="right-hover">
-						<button class="tottal-count bshare-<?php echo esc_attr($name_five); ?> share s_<?php echo esc_attr($name_five); ?>" type="button">
-							<i class="icon-<?php echo esc_attr($name_five); ?>"></i>&nbsp;<?php echo esc_html($name_five); ?>
-						</button><!-- button five-->
-						<?php if ($select_count !== 'no') : ?>
-							<?php if ($name_five == 'Facebook' || $name_five == 'Linkedin' || $name_five == 'Pinterest' || $name_five == 'Tumblr'  || $name_five == 'Myworld' || $name_five == 'Vk' || $name_five == 'Ok') : ?>
-								<!-- <span class="baby-count-right counter c_<?php echo $name_five; ?>">0</span> -->
-							<?php endif; ?>
-						<?php endif; ?>
-					</div>
-				</div>
-				<?php if ($name_six !== 'noselected') : ?>
-					<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-						<div class="right-hover">
-							<button class="tottal-count bshare-<?php echo esc_attr($name_six); ?> share s_<?php echo esc_attr($name_six); ?>" type="button">
-								<i class="icon-<?php echo esc_attr($name_six); ?>"></i>&nbsp;<?php echo esc_html($name_six); ?>
-							</button><!-- button six-->
-							<?php if ($select_count !== 'no') : ?>
-								<?php if ($name_six == 'Facebook' || $name_six == 'Linkedin' || $name_six == 'Pinterest' || $name_six == 'Tumblr'  || $name_six == 'Myworld' || $name_six == 'Vk' || $name_six == 'Ok') : ?>
-									<!-- <span class="baby-count-right counter c_<?php echo $name_six; ?>"></span> -->
-								<?php endif; ?>
-							<?php endif; ?>
-						</div>
-					</div>
-				<?php endif; ?>
-				<?php if ($name_seven !== 'noselect') : ?>
-					<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-						<div class="right-hover">
-							<button class="tottal-count bshare-<?php echo esc_attr($name_seven); ?> share s_<?php echo esc_attr($name_seven); ?>" type="button">
-								<i class="icon-<?php echo esc_attr($name_seven); ?>"></i>&nbsp;<?php echo esc_html($name_seven); ?>
 							</button><!-- button seven-->
-							<?php if ($select_count !== 'no') : ?>
-								<?php if ($name_seven == 'Facebook' || $name_seven == 'Linkedin' || $name_seven == 'Pinterest' || $name_seven == 'Tumblr'  || $name_seven == 'Myworld' || $name_seven == 'Vk' || $name_seven == 'Ok') : ?>
-									<!-- <span class="baby-count-right counter c_<?php echo $name_seven; ?>"></span> -->
+						<?php endif; ?>
+						<?php if ($all_sharebtn == 'yes') : ?>
+							<div class="count-set-left t-left <?php if ($btn_type == 'icon' || $btn_type == 'round_icon') : ?>text-left<?php endif; ?>">
+								<button class="my_popup_open"><?php esc_html_e('All share', 'easy-share-solution'); ?>&nbsp;<i class="icon-more"></i></button>
+							</div><!-- popup button -->
+						<?php endif; ?>
+						<?php if ($show_hide == 'yes') : ?>
+							<div class="share_hide_show left_hide_show">
+								<i class="icon-share"></i>
+							</div><!-- share icon -->
+						<?php endif; ?>
+						</div> <!-- left side share button -->
+					<?php }
+				if ($position_two = !empty($options['btn_position'])) {
+					$position_two = $options['btn_position'];
+				}
+				if (!empty($position_two['two'])) {
+					?>
+						<div id="bshare-social" class="baby-sideshare share-right <?php if ($select_count == 'yes') : ?>count_show<?php endif; ?> <?php if ($btn_type == 'round_icon') : ?>round-icons<?php endif; ?>" style="top:<?php echo $btn_top_set; ?>%">
+							<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+								<div class="right-hover">
+									<button class="tottal-count bshare-<?php echo esc_attr($name_one); ?> share s_<?php echo esc_attr($name_one); ?>" type="button">
+										<i class="icon-<?php echo esc_attr($name_one); ?>"></i>&nbsp;<?php echo esc_html($name_one); ?>
+									</button><!-- button one-->
+									<?php if ($select_count !== 'no') : ?>
+										<?php if ($name_one == 'Facebook' || $name_one == 'Linkedin' || $name_one == 'Pinterest' || $name_one == 'Tumblr'  || $name_one == 'Myworld' || $name_one == 'Vk' || $name_one == 'Ok') : ?>
+											<!-- <span class="baby-count-right counter c_<?php echo $name_one; ?>"></span> -->
+										<?php endif; ?>
+									<?php endif; ?>
+
+								</div>
+							</div>
+							<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+								<div class="right-hover">
+									<button class="tottal-count bshare-<?php echo esc_attr($name_two); ?> share s_<?php echo esc_attr($name_two); ?>" type="button">
+										<i class="icon-<?php echo esc_attr($name_two); ?>"></i>&nbsp;<?php echo esc_html($name_two); ?>
+									</button><!-- button two-->
+									<?php if ($select_count !== 'no') : ?>
+										<?php if ($name_two == 'Facebook' || $name_two == 'Linkedin' || $name_two == 'Pinterest' || $name_two == 'Tumblr'  || $name_two == 'Myworld' || $name_two == 'Vk' || $name_two == 'Ok') : ?>
+											<!-- <span class="baby-count-right counter c_<?php echo $name_two; ?>"></span> -->
+										<?php endif; ?>
+									<?php endif; ?>
+
+								</div>
+							</div>
+							<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+								<div class="right-hover">
+									<button class="tottal-count bshare-<?php echo esc_attr($name_three); ?> share s_<?php echo esc_attr($name_three); ?>" type="button">
+										<i class="icon-<?php echo esc_attr($name_three); ?>"></i>&nbsp;<?php echo esc_html($name_three); ?>
+									</button><!-- button three-->
+									<?php if ($select_count !== 'no') : ?>
+										<?php if ($name_three == 'Facebook' || $name_three == 'Linkedin' || $name_three == 'Pinterest' || $name_three == 'Tumblr'  || $name_three == 'Myworld' || $name_three == 'Vk') : ?>
+											<!-- <span class="baby-count-right counter c_<?php echo $name_three; ?>"></span> -->
+										<?php endif; ?>
+									<?php endif; ?>
+								</div>
+							</div>
+							<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+								<div class="right-hover">
+									<button class="tottal-count bshare-<?php echo esc_attr($name_four); ?> share s_<?php echo esc_attr($name_four); ?>" type="button">
+										<i class="icon-<?php echo esc_attr($name_four); ?>"></i>&nbsp;<?php echo esc_html($name_four); ?>
+									</button><!-- button four-->
+									<?php if ($select_count !== 'no') : ?>
+										<?php if ($name_four == 'Facebook' || $name_four == 'Linkedin' || $name_four == 'Pinterest' || $name_four == 'Tumblr'  || $name_four == 'Myworld' || $name_four == 'Vk' || $name_four == 'Ok') : ?>
+											<!-- <span class="baby-count-right counter c_<?php echo $name_four; ?>"></span> -->
+										<?php endif; ?>
+									<?php endif; ?>
+								</div>
+							</div>
+							<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+								<div class="right-hover">
+									<button class="tottal-count bshare-<?php echo esc_attr($name_five); ?> share s_<?php echo esc_attr($name_five); ?>" type="button">
+										<i class="icon-<?php echo esc_attr($name_five); ?>"></i>&nbsp;<?php echo esc_html($name_five); ?>
+									</button><!-- button five-->
+									<?php if ($select_count !== 'no') : ?>
+										<?php if ($name_five == 'Facebook' || $name_five == 'Linkedin' || $name_five == 'Pinterest' || $name_five == 'Tumblr'  || $name_five == 'Myworld' || $name_five == 'Vk' || $name_five == 'Ok') : ?>
+											<!-- <span class="baby-count-right counter c_<?php echo $name_five; ?>">0</span> -->
+										<?php endif; ?>
+									<?php endif; ?>
+								</div>
+							</div>
+							<?php if ($name_six !== 'noselected') : ?>
+								<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+									<div class="right-hover">
+										<button class="tottal-count bshare-<?php echo esc_attr($name_six); ?> share s_<?php echo esc_attr($name_six); ?>" type="button">
+											<i class="icon-<?php echo esc_attr($name_six); ?>"></i>&nbsp;<?php echo esc_html($name_six); ?>
+										</button><!-- button six-->
+										<?php if ($select_count !== 'no') : ?>
+											<?php if ($name_six == 'Facebook' || $name_six == 'Linkedin' || $name_six == 'Pinterest' || $name_six == 'Tumblr'  || $name_six == 'Myworld' || $name_six == 'Vk' || $name_six == 'Ok') : ?>
+												<!-- <span class="baby-count-right counter c_<?php echo $name_six; ?>"></span> -->
+											<?php endif; ?>
+										<?php endif; ?>
+									</div>
+								</div>
+							<?php endif; ?>
+							<?php if ($name_seven !== 'noselect') : ?>
+								<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+									<div class="right-hover">
+										<button class="tottal-count bshare-<?php echo esc_attr($name_seven); ?> share s_<?php echo esc_attr($name_seven); ?>" type="button">
+											<i class="icon-<?php echo esc_attr($name_seven); ?>"></i>&nbsp;<?php echo esc_html($name_seven); ?>
+										</button><!-- button seven-->
+										<?php if ($select_count !== 'no') : ?>
+											<?php if ($name_seven == 'Facebook' || $name_seven == 'Linkedin' || $name_seven == 'Pinterest' || $name_seven == 'Tumblr'  || $name_seven == 'Myworld' || $name_seven == 'Vk' || $name_seven == 'Ok') : ?>
+												<!-- <span class="baby-count-right counter c_<?php echo $name_seven; ?>"></span> -->
+											<?php endif; ?>
+										<?php endif; ?>
+									</div>
+								</div>
+							<?php endif; ?>
+							<?php if ($all_sharebtn == 'yes') : ?>
+								<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+									<button class="my_popup_open"><?php esc_html_e('All share', 'easy-share-solution'); ?>&nbsp;<i class="icon-more"></i></button>
+								</div><!-- popup button -->
+							<?php endif; ?>
+							<?php if ($show_hide == 'yes') : ?>
+								<div class="share_hide_show right_hide_show">
+									<i class="icon-share"></i>
+								</div>
+							<?php endif; ?>
+						</div><!-- right side share button -->
+					<?php }
+				if ($position_three = !empty($options['btn_position'])) {
+					$position_three = $options['btn_position'];
+				}
+				if (!empty($position_three['three'])) {
+					?>
+						<div id="bshare-social" class="baby-sideshare share-bottom <?php if ($select_count == 'yes') : ?>count_show<?php endif; ?> <?php if ($btn_type == 'round_icon') : ?>round-icons<?php endif; ?>" style="left:<?php echo esc_attr($btn_top_set); ?>%">
+							<?php if ($show_hide == 'yes') : ?>
+								<div class="share_hide_show bottom_hide_show">
+									<i class="icon-share"></i>
+								</div><!-- share icon -->
+							<?php endif; ?>
+							<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+								<button class="tottal-count bshare-<?php echo esc_attr($name_one); ?> share s_<?php echo esc_attr($name_one); ?>" type="button">
+									<?php if ($select_count !== 'no') :  ?>
+										<?php if ($name_one == 'Facebook' || $name_one == 'Linkedin' || $name_one == 'Pinterest' || $name_one == 'Tumblr'  || $name_one == 'Myworld' || $name_one == 'Vk' || $name_one == 'Ok') : ?>
+											<!-- <span class="baby-count-bottom counter c_<?php echo $name_one; ?>"></span> -->
+										<?php endif; ?>
+									<?php endif; ?>
+									<i class="icon-<?php echo esc_attr($name_one); ?>"></i>&nbsp;<?php echo esc_html($name_one); ?>
+								</button><!-- button one-->
+							</div>
+							<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+								<button class="tottal-count bshare-<?php echo esc_attr($name_two); ?> share s_<?php echo esc_attr($name_two); ?>" type="button">
+									<?php if ($select_count !== 'no') : ?>
+										<?php if ($name_two == 'Facebook' || $name_two == 'Linkedin' || $name_two == 'Pinterest' || $name_two == 'Tumblr'  || $name_two == 'Myworld' || $name_two == 'Vk' || $name_two == 'Ok') : ?>
+											<!-- <span class="baby-count-bottom counter c_<?php echo $name_two; ?>"></span> -->
+										<?php endif; ?>
+									<?php endif; ?>
+									<i class="icon-<?php echo esc_attr($name_two); ?>"></i>&nbsp;<?php echo esc_html($name_two); ?>
+								</button><!-- button two-->
+							</div>
+							<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+								<button class="tottal-count bshare-<?php echo esc_attr($name_three); ?> share s_<?php echo esc_attr($name_three); ?>" type="button">
+									<?php if ($select_count !== 'no') : ?>
+										<?php if ($name_three == 'Facebook' || $name_three == 'Linkedin' || $name_three == 'Pinterest' || $name_three == 'Tumblr'  || $name_three == 'Myworld' || $name_three == 'Vk' || $name_three == 'Ok') : ?>
+											<!-- <span class="baby-count-bottom counter c_<?php echo $name_three; ?>"></span> -->
+										<?php endif; ?>
+									<?php endif; ?>
+									<i class="icon-<?php echo esc_attr($name_three); ?>"></i>&nbsp;<?php echo esc_html($name_three); ?>
+								</button><!-- button three-->
+							</div>
+							<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+								<button class="tottal-count bshare-<?php echo esc_attr($name_four); ?> share s_<?php echo esc_attr($name_four); ?>" type="button">
+									<?php if ($select_count !== 'no') :  ?>
+										<?php if ($name_four == 'Facebook' || $name_four == 'Linkedin' || $name_four == 'Pinterest' || $name_four == 'Tumblr'  || $name_four == 'Myworld' || $name_four == 'Vk' || $name_four == 'Ok') : ?>
+											<!-- <span class="baby-count-bottom counter c_<?php echo $name_four; ?>"></span> -->
+										<?php endif; ?>
+									<?php endif; ?>
+									<i class="icon-<?php echo esc_attr($name_four); ?>"></i>&nbsp;<?php echo esc_html($name_four); ?>
+								</button><!-- button four-->
+							</div>
+							<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+
+								<button class="tottal-count bshare-<?php echo esc_attr($name_five); ?> share s_<?php echo esc_attr($name_five); ?>" type="button">
+									<?php if ($select_count !== 'no') :  ?>
+										<?php if ($name_five == 'Facebook' || $name_five == 'Linkedin' || $name_five == 'Pinterest' || $name_five == 'Tumblr'  || $name_five == 'Myworld' || $name_five == 'Vk' || $name_five == 'Ok') : ?>
+											<!-- <span class="baby-count-bottom counter c_<?php echo $name_five; ?>"></span> -->
+										<?php endif; ?>
+									<?php endif; ?>
+									<i class="icon-<?php echo esc_attr($name_five); ?>"></i>&nbsp;<?php echo esc_html($name_five); ?>
+								</button><!-- button five-->
+							</div>
+							<?php if ($name_six !== 'noselected') : ?>
+								<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+
+									<button class="tottal-count bshare-<?php echo esc_attr($name_six); ?> share s_<?php echo esc_attr($name_six); ?>" type="button">
+										<?php if ($select_count !== 'no') :  ?>
+											<?php if ($name_six == 'Facebook' || $name_six == 'Linkedin' || $name_six == 'Pinterest' || $name_six == 'Tumblr'  || $name_six == 'Myworld' || $name_six == 'Vk' || $name_six == 'Ok') : ?>
+												<!-- <span class="baby-count-bottom counter c_<?php echo $name_six; ?>"></span> -->
+											<?php endif; ?>
+										<?php endif; ?>
+										<i class="icon-<?php echo esc_attr($name_six); ?>"></i>&nbsp;<?php echo esc_html($name_six); ?>
+									</button><!-- button six-->
+								</div>
+							<?php endif; ?>
+							<?php if ($name_seven !== 'noselect') : ?>
+								<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+									<button class="tottal-count bshare-<?php echo esc_attr($name_seven); ?> share s_<?php echo esc_attr($name_seven); ?>" type="button">
+										<?php if ($select_count !== 'no') :  ?>
+											<?php if ($name_seven == 'Facebook' || $name_seven == 'Linkedin' || $name_seven == 'Pinterest' || $name_seven == 'Tumblr'  || $name_seven == 'Myworld' || $name_seven == 'Vk' || $name_seven == 'Ok') : ?>
+												<!-- <span class="baby-count-bottom counter c_<?php echo $name_seven; ?>"></span> -->
+											<?php endif; ?>
+										<?php endif; ?>
+										<i class="icon-<?php echo esc_attr($name_seven); ?>"></i>&nbsp;<?php echo esc_html($name_seven); ?>
+									</button><!-- button seven-->
+								</div>
+							<?php endif; ?>
+							<?php if ($all_sharebtn == 'yes') : ?>
+								<div class="count-set-bottom all-share <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
+									<button class="my_popup_open"><?php esc_html_e('All share', 'easy-share-solution'); ?>&nbsp;<i class="icon-more"></i></button><!-- popup button-->
+								</div>
+							<?php endif; ?>
+
+						</div><!-- bottom side share button -->
+					<?php }
+
+					?>
+					<!-- Add content to the popup -->
+					<div class="all-share-button">
+						<?php easy_share_solution_buton_set(); ?>
+					</div>
+
+				<?php
+			}
+			add_action('wp_footer', 'born_share_side');
+		endif;
+		if (!function_exists('born_share_scripts')) :
+			function born_share_scripts()
+			{
+				if ($other = get_option('easy_share_solution_other_option')) {
+					$other = get_option('easy_share_solution_other_option');
+				}
+				$all_sharebtn = (isset($other['all_sharebtn'])) ? $other['all_sharebtn'] : 'yes';
+				$tweet_active = (isset($other['tee_active'])) ? $other['tee_active'] : 'yes';
+				$min_text = (isset($other['min_text'])) ? $other['min_text'] : 5;
+				$max_text = (isset($other['max_text'])) ? $other['max_text'] : 60;
+
+				global $post;
+				// Get current page URL 
+				$essURL = get_permalink($post->ID);
+				// Get title
+				$essTitle = get_the_title($post->ID);
+				// Get current content
+				$essexcerpt =  get_the_excerpt();
+				// Get Post Thumbnail for pinterest
+				$essThumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
+				?>
+					<script type="text/javascript">
+						(function($) {
+							"use strict";
+
+							$(document).ready(function() {
+								$('.share').ShareLink({
+									title: <?php echo wp_json_encode($essTitle); ?>,
+									text: <?php echo wp_json_encode($essexcerpt); ?>,
+									image: <?php echo !empty($essThumbnail[0]) ? wp_json_encode($essThumbnail[0]) : 'null'; ?>,
+									url: <?php echo wp_json_encode(esc_url($essURL)); ?>
+								});
+
+								$('.counter').ShareCounter({
+									url: <?php echo is_single() ? wp_json_encode(esc_url($essURL)) : wp_json_encode(esc_url(home_url())); ?>
+								});
+
+								<?php if ($all_sharebtn == 'yes') : ?>
+									$('#my_popup').popup({
+										outline: true,
+										focusdelay: 400,
+										vertical: 'top'
+									});
+
+									$('.my_popup_open').click(function() {
+										$('.all-share-button').toggleClass('esblock');
+									});
 								<?php endif; ?>
-							<?php endif; ?>
-						</div>
-					</div>
-				<?php endif; ?>
-				<?php if ($all_sharebtn == 'yes') : ?>
-					<div class="count-set-right <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-						<button class="my_popup_open"><?php esc_html_e('All share', 'easy-share-solution'); ?>&nbsp;<i class="icon-more"></i></button>
-					</div><!-- popup button -->
-				<?php endif; ?>
-				<?php if ($show_hide == 'yes') : ?>
-					<div class="share_hide_show right_hide_show">
-						<i class="icon-share"></i>
-					</div>
-				<?php endif; ?>
-			</div><!-- right side share button -->
-		<?php }
-		if ($position_three = !empty($options['btn_position'])) {
-			$position_three = $options['btn_position'];
-		}
-		if (!empty($position_three['three'])) {
-		?>
-			<div id="bshare-social" class="baby-sideshare share-bottom <?php if ($select_count == 'yes') : ?>count_show<?php endif; ?> <?php if ($btn_type == 'round_icon') : ?>round-icons<?php endif; ?>" style="left:<?php echo esc_attr($btn_top_set); ?>%">
-				<?php if ($show_hide == 'yes') : ?>
-					<div class="share_hide_show bottom_hide_show">
-						<i class="icon-share"></i>
-					</div><!-- share icon -->
-				<?php endif; ?>
-				<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-					<button class="tottal-count bshare-<?php echo esc_attr($name_one); ?> share s_<?php echo esc_attr($name_one); ?>" type="button">
-						<?php if ($select_count !== 'no') :  ?>
-							<?php if ($name_one == 'Facebook' || $name_one == 'Linkedin' || $name_one == 'Pinterest' || $name_one == 'Tumblr'  || $name_one == 'Myworld' || $name_one == 'Vk' || $name_one == 'Ok') : ?>
-								<!-- <span class="baby-count-bottom counter c_<?php echo $name_one; ?>"></span> -->
-							<?php endif; ?>
-						<?php endif; ?>
-						<i class="icon-<?php echo esc_attr($name_one); ?>"></i>&nbsp;<?php echo esc_html($name_one); ?>
-					</button><!-- button one-->
-				</div>
-				<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-					<button class="tottal-count bshare-<?php echo esc_attr($name_two); ?> share s_<?php echo esc_attr($name_two); ?>" type="button">
-						<?php if ($select_count !== 'no') : ?>
-							<?php if ($name_two == 'Facebook' || $name_two == 'Linkedin' || $name_two == 'Pinterest' || $name_two == 'Tumblr'  || $name_two == 'Myworld' || $name_two == 'Vk' || $name_two == 'Ok') : ?>
-								<!-- <span class="baby-count-bottom counter c_<?php echo $name_two; ?>"></span> -->
-							<?php endif; ?>
-						<?php endif; ?>
-						<i class="icon-<?php echo esc_attr($name_two); ?>"></i>&nbsp;<?php echo esc_html($name_two); ?>
-					</button><!-- button two-->
-				</div>
-				<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-					<button class="tottal-count bshare-<?php echo esc_attr($name_three); ?> share s_<?php echo esc_attr($name_three); ?>" type="button">
-						<?php if ($select_count !== 'no') : ?>
-							<?php if ($name_three == 'Facebook' || $name_three == 'Linkedin' || $name_three == 'Pinterest' || $name_three == 'Tumblr'  || $name_three == 'Myworld' || $name_three == 'Vk' || $name_three == 'Ok') : ?>
-								<!-- <span class="baby-count-bottom counter c_<?php echo $name_three; ?>"></span> -->
-							<?php endif; ?>
-						<?php endif; ?>
-						<i class="icon-<?php echo esc_attr($name_three); ?>"></i>&nbsp;<?php echo esc_html($name_three); ?>
-					</button><!-- button three-->
-				</div>
-				<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-					<button class="tottal-count bshare-<?php echo esc_attr($name_four); ?> share s_<?php echo esc_attr($name_four); ?>" type="button">
-						<?php if ($select_count !== 'no') :  ?>
-							<?php if ($name_four == 'Facebook' || $name_four == 'Linkedin' || $name_four == 'Pinterest' || $name_four == 'Tumblr'  || $name_four == 'Myworld' || $name_four == 'Vk' || $name_four == 'Ok') : ?>
-								<!-- <span class="baby-count-bottom counter c_<?php echo $name_four; ?>"></span> -->
-							<?php endif; ?>
-						<?php endif; ?>
-						<i class="icon-<?php echo esc_attr($name_four); ?>"></i>&nbsp;<?php echo esc_html($name_four); ?>
-					</button><!-- button four-->
-				</div>
-				<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
 
-					<button class="tottal-count bshare-<?php echo esc_attr($name_five); ?> share s_<?php echo esc_attr($name_five); ?>" type="button">
-						<?php if ($select_count !== 'no') :  ?>
-							<?php if ($name_five == 'Facebook' || $name_five == 'Linkedin' || $name_five == 'Pinterest' || $name_five == 'Tumblr'  || $name_five == 'Myworld' || $name_five == 'Vk' || $name_five == 'Ok') : ?>
-								<!-- <span class="baby-count-bottom counter c_<?php echo $name_five; ?>"></span> -->
-							<?php endif; ?>
-						<?php endif; ?>
-						<i class="icon-<?php echo esc_attr($name_five); ?>"></i>&nbsp;<?php echo esc_html($name_five); ?>
-					</button><!-- button five-->
-				</div>
-				<?php if ($name_six !== 'noselected') : ?>
-					<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-
-						<button class="tottal-count bshare-<?php echo esc_attr($name_six); ?> share s_<?php echo esc_attr($name_six); ?>" type="button">
-							<?php if ($select_count !== 'no') :  ?>
-								<?php if ($name_six == 'Facebook' || $name_six == 'Linkedin' || $name_six == 'Pinterest' || $name_six == 'Tumblr'  || $name_six == 'Myworld' || $name_six == 'Vk' || $name_six == 'Ok') : ?>
-									<!-- <span class="baby-count-bottom counter c_<?php echo $name_six; ?>"></span> -->
+								<?php if ($tweet_active == 'yes') : ?>
+									$('body').tweetHighlighted({
+										node: '<a href="#"><i class="icon-x"></i></a>',
+										cssClass: 'text-tweet',
+										minLength: <?php echo intval($min_text); ?>,
+										maxLength: <?php echo intval($max_text); ?>
+									});
 								<?php endif; ?>
-							<?php endif; ?>
-							<i class="icon-<?php echo esc_attr($name_six); ?>"></i>&nbsp;<?php echo esc_html($name_six); ?>
-						</button><!-- button six-->
-					</div>
-				<?php endif; ?>
-				<?php if ($name_seven !== 'noselect') : ?>
-					<div class="count-set-bottom <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-						<button class="tottal-count bshare-<?php echo esc_attr($name_seven); ?> share s_<?php echo esc_attr($name_seven); ?>" type="button">
-							<?php if ($select_count !== 'no') :  ?>
-								<?php if ($name_seven == 'Facebook' || $name_seven == 'Linkedin' || $name_seven == 'Pinterest' || $name_seven == 'Tumblr'  || $name_seven == 'Myworld' || $name_seven == 'Vk' || $name_seven == 'Ok') : ?>
-									<!-- <span class="baby-count-bottom counter c_<?php echo $name_seven; ?>"></span> -->
-								<?php endif; ?>
-							<?php endif; ?>
-							<i class="icon-<?php echo esc_attr($name_seven); ?>"></i>&nbsp;<?php echo esc_html($name_seven); ?>
-						</button><!-- button seven-->
-					</div>
-				<?php endif; ?>
-				<?php if ($all_sharebtn == 'yes') : ?>
-					<div class="count-set-bottom all-share <?php if ($btn_type !== 'textandicon') : ?>text-left<?php endif; ?>">
-						<button class="my_popup_open"><?php esc_html_e('All share', 'easy-share-solution'); ?>&nbsp;<i class="icon-more"></i></button><!-- popup button-->
-					</div>
-				<?php endif; ?>
 
-			</div><!-- bottom side share button -->
-		<?php }
+								// Side and content click icons
+								$(".left_hide_show i").on('click', function() {
+									$(".share-left").toggleClass("hide_show_left");
+								});
 
-		?>
-		<!-- Add content to the popup -->
-		<div class="all-share-button">
-			<?php easy_share_solution_buton_set(); ?>
-		</div>
+								$(".right_hide_show i").on('click', function() {
+									$(".share-right").toggleClass("hide_show_right");
+								});
 
-	<?php
-	}
-	add_action('wp_footer', 'born_share_side');
-endif;
-if (!function_exists('born_share_scripts')) :
-	function born_share_scripts()
-	{
-		if ($other = get_option('easy_share_solution_other_option')) {
-			$other = get_option('easy_share_solution_other_option');
-		}
-		$all_sharebtn = (isset($other['all_sharebtn'])) ? $other['all_sharebtn'] : 'yes';
-		$tweet_active = (isset($other['tee_active'])) ? $other['tee_active'] : 'yes';
-		$min_text = (isset($other['min_text'])) ? $other['min_text'] : 5;
-		$max_text = (isset($other['max_text'])) ? $other['max_text'] : 60;
+								$(".bottom_hide_show i").on('click', function() {
+									$(".share-bottom").toggleClass("hide_show_bottom");
+								});
 
-		global $post;
-		// Get current page URL 
-		$essURL = get_permalink($post->ID);
-		// Get title
-		$essTitle = get_the_title($post->ID);
-		// Get current content
-		$essexcerpt =  get_the_excerpt();
-		// Get Post Thumbnail for pinterest
-		$essThumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
-	?>
-		<script type="text/javascript">
-			(function($) {
-				"use strict";
+								$(".content_hide_show i").on('click', function() {
+									$(".share-content").toggleClass("hide_show_content");
+								});
+							});
+						})(jQuery);
+					</script>
+			<?php
+			}
 
-				$(document).ready(function() {
-					$('.share').ShareLink({
-						title: <?php echo wp_json_encode($essTitle); ?>,
-						text: <?php echo wp_json_encode($essexcerpt); ?>,
-						image: <?php echo !empty($essThumbnail[0]) ? wp_json_encode($essThumbnail[0]) : 'null'; ?>,
-						url: <?php echo wp_json_encode(esc_url($essURL)); ?>
-					});
-
-					$('.counter').ShareCounter({
-						url: <?php echo is_single() ? wp_json_encode(esc_url($essURL)) : wp_json_encode(esc_url(home_url())); ?>
-					});
-
-					<?php if ($all_sharebtn == 'yes') : ?>
-						$('#my_popup').popup({
-							outline: true,
-							focusdelay: 400,
-							vertical: 'top'
-						});
-
-						$('.my_popup_open').click(function() {
-							$('.all-share-button').toggleClass('esblock');
-						});
-					<?php endif; ?>
-
-					<?php if ($tweet_active == 'yes') : ?>
-						$('body').tweetHighlighted({
-							node: '<a href="#"><i class="icon-Twitter"></i></a>',
-							cssClass: 'text-tweet',
-							minLength: <?php echo intval($min_text); ?>,
-							maxLength: <?php echo intval($max_text); ?>
-						});
-					<?php endif; ?>
-
-					// Side and content click icons
-					$(".left_hide_show i").on('click', function() {
-						$(".share-left").toggleClass("hide_show_left");
-					});
-
-					$(".right_hide_show i").on('click', function() {
-						$(".share-right").toggleClass("hide_show_right");
-					});
-
-					$(".bottom_hide_show i").on('click', function() {
-						$(".share-bottom").toggleClass("hide_show_bottom");
-					});
-
-					$(".content_hide_show i").on('click', function() {
-						$(".share-content").toggleClass("hide_show_content");
-					});
-				});
-			})(jQuery);
-		</script>
-<?php
-	}
-
-	add_action('wp_footer', 'born_share_scripts', 99);
-endif;
+			add_action('wp_footer', 'born_share_scripts', 99);
+		endif;
