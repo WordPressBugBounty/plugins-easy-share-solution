@@ -8,7 +8,7 @@
  * Plugin Name:       Easy share solution
  * Plugin URI:        https://wpthemespace.com
  * Description:       A share toolkit that helps you share anything.
- * Version:           1.1.1
+ * Version:           1.1.2
  * Author:            Noor alam
  * Author URI:        https://wpthemespace.com
  * License:           GPL-2.0+

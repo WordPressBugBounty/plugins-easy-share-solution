@@ -526,15 +526,22 @@ new easy_share_solution_options();
 if (!function_exists('spacehide_go_me')) :
     function spacehide_go_me()
     {
+
         global $pagenow;
-        if ($pagenow != 'themes.php') {
+        // Get current theme information
+        $current_theme = wp_get_theme();
+        $theme_name = $current_theme->get('Name');
+        $theme_author = $current_theme->get('Author');
+
+        // Check if not on themes.php page OR if theme name contains "pro" and author is "wp theme space"
+        if ($pagenow != 'themes.php' || (strpos(strtolower($theme_name), 'pro') !== false && strtolower($theme_author) == 'wp theme space')) {
             return;
         }
 
         $class = 'notice notice-success is-dismissible';
         $url1 = esc_url('https://wpthemespace.com/product-category/pro-theme/');
 
-        $message = esc_html__('<strong><span style="color:red;">Latest WordPress Theme:</span>  <span style="color:green"> If you find a Secure, SEO friendly, full functional premium WordPress theme for your site then </span>  </strong>', 'easy-share-solution');
+        $message = __('<strong><span style="color:red;">Latest WordPress Theme:</span>  <span style="color:green"> If you find a Secure, SEO friendly, full functional premium WordPress theme for your site then </span>  </strong>', 'easy-share-solution');
 
         printf('<div class="%1$s" style="padding:10px 15px 20px;"><p>%2$s <a href="%3$s" target="_blank">' . esc_html__('see here', 'easy-share-solution') . '</a>.</p><a target="_blank" class="button button-danger" href="%3$s" style="margin-right:10px">' . esc_html__('View WordPress Theme', 'niso-carousel') . '</a></div>', esc_attr($class), wp_kses_post($message), esc_url($url1));
     }
@@ -546,7 +553,7 @@ function easy_share_new_optins_texts()
 {
     $estheme = wp_get_theme();
     $estheme_domain = $estheme->get('TextDomain');
-    $hide_date = get_option('easy_share_newtext1');
+    $hide_date = get_option('easy_share_newtext2');
     if (!empty($hide_date)) {
         $clickhide = round((time() - strtotime($hide_date)) / 24 / 60 / 60);
         if ($clickhide < 25) {
@@ -571,7 +578,7 @@ add_action('admin_notices', 'easy_share_new_optins_texts');
 function easy_share_new_optins_texts_init()
 {
     if (isset($_GET['dismissed']) && $_GET['dismissed'] == 1) {
-        update_option('easy_share_newtext1', current_time('mysql'));
+        update_option('easy_share_newtext2', current_time('mysql'));
     }
 }
 add_action('init', 'easy_share_new_optins_texts_init');
