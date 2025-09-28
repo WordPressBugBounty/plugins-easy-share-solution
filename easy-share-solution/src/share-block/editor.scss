@@ -1,0 +1,60 @@
+/**
+ * Share Block Editor Styles
+ */
+.ess-share-block {
+    .ess-preview-container {
+        display: flex;
+        gap: 10px;
+        
+        &.ess-layout-vertical {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        &.ess-layout-horizontal {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+    
+    .ess-share-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: var(--wp--preset--spacing--20, 4px);
+        background-color: var(--platform-color);
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        &.ess-style-square {
+            border-radius: 4px;
+        }
+        
+        &.ess-style-circle {
+            border-radius: 50px;
+        }
+        
+        .ess-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .ess-label {
+            font-weight: 500;
+            white-space: nowrap;
+        }
+    }
+}

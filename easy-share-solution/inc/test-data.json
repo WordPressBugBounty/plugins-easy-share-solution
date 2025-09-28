@@ -1,0 +1,111 @@
+{
+  "overview": {
+    "total_shares": 2847,
+    "unique_posts": 156,
+    "growth_percentage": 23.5,
+    "top_platforms": [
+      { "platform": "facebook", "shares": 1284 },
+      { "platform": "twitter", "shares": 892 },
+      { "platform": "linkedin", "shares": 671 }
+    ]
+  },
+  "platform_stats": [
+    {
+      "platform": "facebook",
+      "total_shares": 1284,
+      "unique_posts": 89,
+      "avg_shares": 14.4,
+      "last_share": "2025-08-12 10:30:00"
+    },
+    {
+      "platform": "twitter", 
+      "total_shares": 892,
+      "unique_posts": 76,
+      "avg_shares": 11.7,
+      "last_share": "2025-08-12 09:15:00"
+    },
+    {
+      "platform": "linkedin",
+      "total_shares": 671,
+      "unique_posts": 45,
+      "avg_shares": 14.9,
+      "last_share": "2025-08-12 08:45:00"
+    },
+    {
+      "platform": "pinterest",
+      "total_shares": 234,
+      "unique_posts": 28,
+      "avg_shares": 8.4,
+      "last_share": "2025-08-11 16:20:00"
+    },
+    {
+      "platform": "whatsapp",
+      "total_shares": 189,
+      "unique_posts": 31,
+      "avg_shares": 6.1,
+      "last_share": "2025-08-11 14:30:00"
+    }
+  ],
+  "content_stats": [
+    {
+      "post_id": 1,
+      "post_title": "Shop Toolkit Pro Best WooCommerce Theme",
+      "total_shares": 234,
+      "platforms": ["facebook", "twitter", "linkedin"],
+      "last_share": "2025-08-12 11:20:00"
+    },
+    {
+      "post_id": 2,
+      "post_title": "ResumeX Pro Best Portfolio Theme",
+      "total_shares": 198,
+      "platforms": ["facebook", "linkedin", "pinterest"],
+      "last_share": "2025-08-12 10:45:00"
+    },
+    {
+      "post_id": 3,
+      "post_title": "X Blog Pro Best WordPress Blog Theme",
+      "total_shares": 156,
+      "platforms": ["twitter", "linkedin"],
+      "last_share": "2025-08-12 09:30:00"
+    },
+    {
+      "post_id": 4,
+      "post_title": "NewsPaper Eye Best NewsPaper Theme",
+      "total_shares": 142,
+      "platforms": ["facebook", "twitter"],
+      "last_share": "2025-08-12 08:15:00"
+    }
+  ],
+  "daily_stats": [
+    { "stat_date": "2025-08-12", "total_shares": 187, "unique_posts": 12 },
+    { "stat_date": "2025-08-11", "total_shares": 234, "unique_posts": 18 },
+    { "stat_date": "2025-08-10", "total_shares": 156, "unique_posts": 9 },
+    { "stat_date": "2025-08-09", "total_shares": 203, "unique_posts": 15 },
+    { "stat_date": "2025-08-08", "total_shares": 178, "unique_posts": 11 },
+    { "stat_date": "2025-08-07", "total_shares": 245, "unique_posts": 16 },
+    { "stat_date": "2025-08-06", "total_shares": 189, "unique_posts": 13 },
+    { "stat_date": "2025-08-05", "total_shares": 167, "unique_posts": 8 },
+    { "stat_date": "2025-08-04", "total_shares": 223, "unique_posts": 14 },
+    { "stat_date": "2025-08-03", "total_shares": 198, "unique_posts": 12 },
+    { "stat_date": "2025-08-02", "total_shares": 156, "unique_posts": 10 },
+    { "stat_date": "2025-08-01", "total_shares": 212, "unique_posts": 17 },
+    { "stat_date": "2025-07-31", "total_shares": 134, "unique_posts": 7 },
+    { "stat_date": "2025-07-30", "total_shares": 189, "unique_posts": 11 },
+    { "stat_date": "2025-07-29", "total_shares": 176, "unique_posts": 9 },
+    { "stat_date": "2025-07-28", "total_shares": 234, "unique_posts": 15 },
+    { "stat_date": "2025-07-27", "total_shares": 201, "unique_posts": 13 },
+    { "stat_date": "2025-07-26", "total_shares": 167, "unique_posts": 8 },
+    { "stat_date": "2025-07-25", "total_shares": 198, "unique_posts": 12 },
+    { "stat_date": "2025-07-24", "total_shares": 156, "unique_posts": 10 },
+    { "stat_date": "2025-07-23", "total_shares": 223, "unique_posts": 16 },
+    { "stat_date": "2025-07-22", "total_shares": 189, "unique_posts": 11 },
+    { "stat_date": "2025-07-21", "total_shares": 178, "unique_posts": 9 },
+    { "stat_date": "2025-07-20", "total_shares": 234, "unique_posts": 14 },
+    { "stat_date": "2025-07-19", "total_shares": 201, "unique_posts": 12 },
+    { "stat_date": "2025-07-18", "total_shares": 156, "unique_posts": 8 },
+    { "stat_date": "2025-07-17", "total_shares": 189, "unique_posts": 11 },
+    { "stat_date": "2025-07-16", "total_shares": 167, "unique_posts": 7 },
+    { "stat_date": "2025-07-15", "total_shares": 198, "unique_posts": 13 },
+    { "stat_date": "2025-07-14", "total_shares": 223, "unique_posts": 15 }
+  ]
+}

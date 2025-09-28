@@ -1,0 +1,70 @@
+# Easy Share Solution - Notice System Translations
+# This file contains all translatable strings for the notice system
+
+# Notice Titles
+msgid "Major Update Available!"
+msgstr ""
+
+msgid "Early Bird Special - Limited Time!"
+msgstr ""
+
+# Notice Messages  
+msgid "Exciting news! A huge update is waiting for you featuring a completely modern dashboard, advanced analytics, and powerful new sharing options. Experience the next level of social sharing!"
+msgstr ""
+
+msgid "Unlock the full power of Easy Share Solution Pro! Get advanced analytics, premium designs, and exclusive features. <strong>Special launch price: Only $19</strong> (regular $49) - Limited to first 100 customers!"
+msgstr ""
+
+# Button Texts
+msgid "Explore New Dashboard"
+msgstr ""
+
+msgid "View Analytics"
+msgstr ""
+
+msgid "Get Pro Now - Only $19!"
+msgstr ""
+
+msgid "Maybe Later"
+msgstr ""
+
+msgid "Dismiss this notice"
+msgstr ""
+
+# Price and Discount Info
+msgid "61% OFF"
+msgstr ""
+
+msgid "⏰ Limited to first 100 customers only!"
+msgstr ""
+
+# Error Messages
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+msgid "Permission Denied"
+msgstr ""
+
+msgid "Security check failed. Please refresh the page and try again."
+msgstr ""
+
+msgid "Security Error"
+msgstr ""
+
+msgid "Invalid notice type."
+msgstr ""
+
+msgid "Invalid Request"
+msgstr ""
+
+msgid "Notice not found."
+msgstr ""
+
+msgid "Not Found"
+msgstr ""
+
+msgid "Notice dismissed successfully."
+msgstr ""
+
+msgid "Failed to dismiss notice. Please try again."
+msgstr ""

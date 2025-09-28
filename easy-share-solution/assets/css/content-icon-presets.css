@@ -1,0 +1,575 @@
+/* Content Icon Presets Styles for .ess-share-block */
+
+/* Base content icon styles - TRANSPARENT APPROACH */
+.ess-share-block {
+    --ess-content-bg-color: transparent;
+    --ess-content-gradient-start: transparent;
+    --ess-content-gradient-end: transparent;
+    --ess-content-border-width: 0px;
+    --ess-content-border-color: transparent;
+    --ess-content-border-radius: 8px;
+    --ess-content-shadow-blur: 0px;
+    --ess-content-shadow-opacity: 0;
+    --ess-content-icon-size: 32px;
+    --ess-content-icon-spacing: 6px;
+    --ess-content-icon-padding: 8px;
+    --ess-content-icon-color: transparent;
+    --ess-content-svg-fill-color: #007cba;
+    --ess-content-animation-duration: 300ms;
+    --ess-content-container-padding: 12px;
+    
+    /* Apply container styles - TRANSPARENT */
+    background: transparent !important;
+    border: none !important;
+    border-radius: var(--ess-content-border-radius);
+    padding: var(--ess-content-container-padding);
+    box-shadow: none !important;
+    
+    /* Arrangement */
+    display: flex;
+    flex-direction: row;
+    gap: var(--ess-content-icon-spacing);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Alignment options */
+.ess-share-block.align-left {
+    justify-content: flex-start;
+}
+
+.ess-share-block.align-center {
+    justify-content: center;
+}
+
+.ess-share-block.align-right {
+    justify-content: flex-end;
+}
+
+/* Vertical arrangement */
+.ess-share-block.vertical {
+    flex-direction: column;
+}
+
+/* No shadow */
+.ess-share-block.no-shadow {
+    box-shadow: none;
+}
+
+/* Gradient background */
+.ess-share-block.gradient-bg {
+    background: linear-gradient(135deg, var(--ess-content-gradient-start), var(--ess-content-gradient-end));
+}
+
+/* Content icon link and button styles - TRANSPARENT BACKGROUND APPROACH */
+.ess-share-block .ess-share-link,
+.ess-share-block .ess-share-button,
+.ess-share-block .ess-copy-link,
+.ess-share-block .ess-more-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ess-content-icon-size);
+    height: var(--ess-content-icon-size);
+    padding: var(--ess-content-icon-padding);
+    border-radius: 50%; /* Default circle */
+    text-decoration: none;
+    transition: all var(--ess-content-animation-duration) ease;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    background: transparent !important; /* Force transparent background */
+    cursor: pointer;
+    box-shadow: none !important; /* Force no box shadow */
+}
+
+/* Icon style variations */
+.ess-share-block.icon-rounded .ess-share-link,
+.ess-share-block.icon-rounded .ess-share-button,
+.ess-share-block.icon-rounded .ess-copy-link,
+.ess-share-block.icon-rounded .ess-more-button {
+    border-radius: 6px;
+}
+
+.ess-share-block.icon-square .ess-share-link,
+.ess-share-block.icon-square .ess-share-button,
+.ess-share-block.icon-square .ess-copy-link,
+.ess-share-block.icon-square .ess-more-button {
+    border-radius: 2px;
+}
+
+/* SVG fill color support with maximum specificity */
+.ess-share-block .ess-share-link svg,
+.ess-share-block .ess-share-button svg,
+.ess-share-block .ess-copy-link svg,
+.ess-share-block .ess-more-button svg {
+    fill: var(--ess-content-svg-fill-color) !important;
+    transition: fill var(--ess-content-animation-duration) ease;
+}
+
+/* Force SVG color override for any nested elements with maximum specificity */
+.ess-share-block .ess-share-link svg path,
+.ess-share-block .ess-share-link svg circle,
+.ess-share-block .ess-share-link svg rect,
+.ess-share-block .ess-share-link svg polygon,
+.ess-share-block .ess-share-link svg g,
+.ess-share-block .ess-share-link svg use,
+.ess-share-block .ess-share-link svg *,
+.ess-share-block .ess-share-button svg path,
+.ess-share-block .ess-share-button svg circle,
+.ess-share-block .ess-share-button svg rect,
+.ess-share-block .ess-share-button svg polygon,
+.ess-share-block .ess-share-button svg g,
+.ess-share-block .ess-share-button svg use,
+.ess-share-block .ess-share-button svg *,
+.ess-share-block .ess-copy-link svg path,
+.ess-share-block .ess-copy-link svg circle,
+.ess-share-block .ess-copy-link svg rect,
+.ess-share-block .ess-copy-link svg polygon,
+.ess-share-block .ess-copy-link svg g,
+.ess-share-block .ess-copy-link svg use,
+.ess-share-block .ess-copy-link svg *,
+.ess-share-block .ess-more-button svg path,
+.ess-share-block .ess-more-button svg circle,
+.ess-share-block .ess-more-button svg rect,
+.ess-share-block .ess-more-button svg polygon,
+.ess-share-block .ess-more-button svg g,
+.ess-share-block .ess-more-button svg use,
+.ess-share-block .ess-more-button svg * {
+    fill: inherit !important;
+}
+
+/* Remove any existing fill attributes from SVG elements */
+.ess-share-block .ess-share-link svg[fill],
+.ess-share-block .ess-share-link svg path[fill],
+.ess-share-block .ess-share-link svg circle[fill],
+.ess-share-block .ess-share-link svg rect[fill],
+.ess-share-block .ess-share-link svg polygon[fill],
+.ess-share-block .ess-share-button svg[fill],
+.ess-share-block .ess-share-button svg path[fill],
+.ess-share-block .ess-share-button svg circle[fill],
+.ess-share-block .ess-share-button svg rect[fill],
+.ess-share-block .ess-share-button svg polygon[fill] {
+    fill: var(--ess-content-svg-fill-color) !important;
+}
+
+/* Handle stroke and other SVG attributes */
+.ess-share-block .ess-share-link svg,
+.ess-share-block .ess-share-link svg *,
+.ess-share-block .ess-share-button svg,
+.ess-share-block .ess-share-button svg * {
+    stroke: var(--ess-content-svg-fill-color) !important;
+    color: var(--ess-content-svg-fill-color) !important;
+}
+
+/* Ensure currentColor is overridden */
+.ess-share-block .ess-share-link svg [fill="currentColor"],
+.ess-share-block .ess-share-link svg [stroke="currentColor"],
+.ess-share-block .ess-share-button svg [fill="currentColor"],
+.ess-share-block .ess-share-button svg [stroke="currentColor"] {
+    fill: var(--ess-content-svg-fill-color) !important;
+    stroke: var(--ess-content-svg-fill-color) !important;
+}
+
+/* Final catch-all for any stubborn SVG styles */
+.ess-share-block .ess-share-link svg .cls-1,
+.ess-share-block .ess-share-link svg .st0,
+.ess-share-block .ess-share-link svg .a,
+.ess-share-block .ess-share-link svg .b,
+.ess-share-block .ess-share-button svg .cls-1,
+.ess-share-block .ess-share-button svg .st0,
+.ess-share-block .ess-share-button svg .a,
+.ess-share-block .ess-share-button svg .b {
+    fill: var(--ess-content-svg-fill-color) !important;
+    stroke: var(--ess-content-svg-fill-color) !important;
+}
+
+/* Platform colors - SVG FILL ONLY (no background colors) */
+.ess-share-block.use-platform-colors .ess-share-link.facebook svg,
+.ess-share-block.use-platform-colors .ess-share-button.facebook svg,
+.ess-share-block.use-platform-colors .ess-share-link.facebook svg *,
+.ess-share-block.use-platform-colors .ess-share-button.facebook svg * {
+    fill: #1877f2 !important;
+    stroke: #1877f2 !important;
+    color: #1877f2 !important;
+}
+
+.ess-share-block.use-platform-colors .ess-share-link.xcom svg,
+.ess-share-block.use-platform-colors .ess-share-button.xcom svg,
+.ess-share-block.use-platform-colors .ess-share-link.xcom svg *,
+.ess-share-block.use-platform-colors .ess-share-button.xcom svg * {
+    fill: #1da1f2 !important;
+    stroke: #1da1f2 !important;
+    color: #1da1f2 !important;
+}
+
+.ess-share-block.use-platform-colors .ess-share-link.linkedin svg,
+.ess-share-block.use-platform-colors .ess-share-button.linkedin svg,
+.ess-share-block.use-platform-colors .ess-share-link.linkedin svg *,
+.ess-share-block.use-platform-colors .ess-share-button.linkedin svg * {
+    fill: #0077b5 !important;
+    stroke: #0077b5 !important;
+    color: #0077b5 !important;
+}
+
+.ess-share-block.use-platform-colors .ess-share-link.pinterest svg,
+.ess-share-block.use-platform-colors .ess-share-button.pinterest svg,
+.ess-share-block.use-platform-colors .ess-share-link.pinterest svg *,
+.ess-share-block.use-platform-colors .ess-share-button.pinterest svg * {
+    fill: #bd081c !important;
+    stroke: #bd081c !important;
+    color: #bd081c !important;
+}
+
+.ess-share-block.use-platform-colors .ess-share-link.whatsapp svg,
+.ess-share-block.use-platform-colors .ess-share-button.whatsapp svg,
+.ess-share-block.use-platform-colors .ess-share-link.whatsapp svg *,
+.ess-share-block.use-platform-colors .ess-share-button.whatsapp svg * {
+    fill: #25d366 !important;
+    stroke: #25d366 !important;
+    color: #25d366 !important;
+}
+
+.ess-share-block.use-platform-colors .ess-share-link.telegram svg,
+.ess-share-block.use-platform-colors .ess-share-button.telegram svg,
+.ess-share-block.use-platform-colors .ess-share-link.telegram svg *,
+.ess-share-block.use-platform-colors .ess-share-button.telegram svg * {
+    fill: #0088cc !important;
+    stroke: #0088cc !important;
+    color: #0088cc !important;
+}
+
+.ess-share-block.use-platform-colors .ess-share-link.reddit svg,
+.ess-share-block.use-platform-colors .ess-share-button.reddit svg,
+.ess-share-block.use-platform-colors .ess-share-link.reddit svg *,
+.ess-share-block.use-platform-colors .ess-share-button.reddit svg * {
+    fill: #ff4500 !important;
+    stroke: #ff4500 !important;
+    color: #ff4500 !important;
+}
+
+.ess-share-block.use-platform-colors .ess-share-link.tumblr svg,
+.ess-share-block.use-platform-colors .ess-share-button.tumblr svg,
+.ess-share-block.use-platform-colors .ess-share-link.tumblr svg *,
+.ess-share-block.use-platform-colors .ess-share-button.tumblr svg * {
+    fill: #001935 !important;
+    stroke: #001935 !important;
+    color: #001935 !important;
+}
+
+/* Copy link and more button colors when platform colors enabled */
+.ess-share-block.use-platform-colors .ess-share-button.ess-platform-copy-link svg,
+.ess-share-block.use-platform-colors .ess-share-button.ess-platform-copy-link svg *,
+.ess-share-block.use-platform-colors .ess-share-button.ess-more-button svg,
+.ess-share-block.use-platform-colors .ess-share-button.ess-more-button svg * {
+    fill: #6c757d !important; /* Default gray for copy/more buttons */
+    stroke: #6c757d !important;
+    color: #6c757d !important;
+}
+
+/* Custom icon colors when platform colors disabled - TRANSPARENT BACKGROUNDS */
+.ess-share-block:not(.use-platform-colors) .ess-share-link,
+.ess-share-block:not(.use-platform-colors) .ess-share-button {
+    background: transparent !important; /* Force transparent background */
+}
+
+.ess-share-block:not(.use-platform-colors) .ess-share-link svg,
+.ess-share-block:not(.use-platform-colors) .ess-share-link svg path,
+.ess-share-block:not(.use-platform-colors) .ess-share-link svg circle,
+.ess-share-block:not(.use-platform-colors) .ess-share-link svg rect,
+.ess-share-block:not(.use-platform-colors) .ess-share-link svg polygon,
+.ess-share-block:not(.use-platform-colors) .ess-share-link svg *,
+.ess-share-block:not(.use-platform-colors) .ess-share-link svg [fill],
+.ess-share-block:not(.use-platform-colors) .ess-share-link svg [stroke],
+.ess-share-block:not(.use-platform-colors) .ess-share-button svg,
+.ess-share-block:not(.use-platform-colors) .ess-share-button svg path,
+.ess-share-block:not(.use-platform-colors) .ess-share-button svg circle,
+.ess-share-block:not(.use-platform-colors) .ess-share-button svg rect,
+.ess-share-block:not(.use-platform-colors) .ess-share-button svg polygon,
+.ess-share-block:not(.use-platform-colors) .ess-share-button svg *,
+.ess-share-block:not(.use-platform-colors) .ess-share-button svg [fill],
+.ess-share-block:not(.use-platform-colors) .ess-share-button svg [stroke] {
+    fill: var(--ess-content-svg-fill-color) !important;
+    stroke: var(--ess-content-svg-fill-color) !important;
+    color: var(--ess-content-svg-fill-color) !important;
+}
+
+/* Hover animations */
+.ess-share-block.hover-scale .ess-share-link:hover,
+.ess-share-block.hover-scale .ess-share-button:hover {
+    transform: scale(1.1);
+}
+
+.ess-share-block.hover-lift .ess-share-link:hover,
+.ess-share-block.hover-lift .ess-share-button:hover,
+.ess-share-block.hover-lift .ess-copy-link:hover,
+.ess-share-block.hover-lift .ess-more-button:hover {
+    transform: translateY(-3px);
+}
+
+.ess-share-block.hover-bounce .ess-share-link:hover,
+.ess-share-block.hover-bounce .ess-share-button:hover,
+.ess-share-block.hover-bounce .ess-copy-link:hover,
+.ess-share-block.hover-bounce .ess-more-button:hover {
+    animation: bounce-hover var(--ess-content-animation-duration) ease;
+}
+
+.ess-share-block.hover-glow .ess-share-link:hover,
+.ess-share-block.hover-glow .ess-share-button:hover,
+.ess-share-block.hover-glow .ess-copy-link:hover,
+.ess-share-block.hover-glow .ess-more-button:hover {
+    transform: scale(1.05);
+}
+
+@keyframes bounce-hover {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Preset-specific styles - TRANSPARENT BACKGROUND APPROACH */
+
+/* Modern Glass Preset - Clean transparent icons with soft shadow */
+.ess-share-block.preset-modern-glass {
+    --ess-content-border-width: 0px;
+    --ess-content-border-radius: 12px;
+    --ess-content-shadow-blur: 0px;
+    --ess-content-shadow-opacity: 0;
+    --ess-content-icon-size: 32px;
+    --ess-content-icon-spacing: 8px;
+    --ess-content-icon-padding: 10px;
+    --ess-content-svg-fill-color: #007cba;
+}
+
+/* Modern Glass - Add box shadow to all icon types */
+.ess-share-block.preset-modern-glass .ess-share-link,
+.ess-share-block.preset-modern-glass .ess-share-button,
+.ess-share-block.preset-modern-glass .ess-copy-link,
+.ess-share-block.preset-modern-glass .ess-more-button {
+    box-shadow: 0 4px 15px rgba(0, 124, 186, 0.2) !important;
+    padding: 10px !important;
+}
+
+/* Vibrant Neon Preset - Bright neon SVG colors with glow shadow */
+.ess-share-block.preset-vibrant-neon {
+    --ess-content-border-width: 0px;
+    --ess-content-border-radius: 8px;
+    --ess-content-shadow-blur: 0px;
+    --ess-content-shadow-opacity: 0;
+    --ess-content-icon-size: 36px;
+    --ess-content-icon-spacing: 10px;
+    --ess-content-icon-padding: 12px;
+    --ess-content-svg-fill-color: #029651
+}
+
+/* Vibrant Neon - Add glowing box shadow to all icon types */
+.ess-share-block.preset-vibrant-neon .ess-share-link,
+.ess-share-block.preset-vibrant-neon .ess-share-button,
+.ess-share-block.preset-vibrant-neon .ess-copy-link,
+.ess-share-block.preset-vibrant-neon .ess-more-button {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), 0 4px 15px rgba(0, 255, 136, 0.2) !important;
+    padding: 12px !important;
+}
+
+/* Minimal Clean Preset - Simple gray SVG */
+.ess-share-block.preset-minimal-clean {
+    --ess-content-border-width: 0px;
+    --ess-content-border-radius: 6px;
+    --ess-content-shadow-blur: 0px;
+    --ess-content-shadow-opacity: 0;
+    --ess-content-icon-size: 28px;
+    --ess-content-icon-spacing: 4px;
+    --ess-content-icon-padding: 8px;
+    --ess-content-svg-fill-color: #495057;
+}
+
+/* Gradient Flow Preset - Purple SVG color with elegant shadow */
+.ess-share-block.preset-gradient-flow {
+    --ess-content-border-width: 0px;
+    --ess-content-border-radius: 16px;
+    --ess-content-shadow-blur: 0px;
+    --ess-content-shadow-opacity: 0;
+    --ess-content-icon-size: 34px;
+    --ess-content-icon-spacing: 8px;
+    --ess-content-icon-padding: 12px;
+    --ess-content-svg-fill-color: #667eea;
+}
+
+/* Gradient Flow - Add elegant box shadow to all icon types */
+.ess-share-block.preset-gradient-flow .ess-share-link,
+.ess-share-block.preset-gradient-flow .ess-share-button,
+.ess-share-block.preset-gradient-flow .ess-copy-link,
+.ess-share-block.preset-gradient-flow .ess-more-button {
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3), 0 4px 10px rgba(102, 126, 234, 0.2) !important;
+    padding: 12px !important;
+}
+
+/* SVG Blue Preset - Blue SVG fill only */
+.ess-share-block.preset-svg-blue {
+    --ess-content-border-width: 0px;
+    --ess-content-border-radius: 8px;
+    --ess-content-shadow-blur: 0px;
+    --ess-content-shadow-opacity: 0;
+    --ess-content-icon-size: 32px;
+    --ess-content-icon-spacing: 6px;
+    --ess-content-icon-padding: 8px;
+    --ess-content-svg-fill-color: #3b82f6;
+}
+
+/* SVG Red Preset - Red SVG fill only */
+.ess-share-block.preset-svg-red {
+    --ess-content-border-width: 0px;
+    --ess-content-border-radius: 8px;
+    --ess-content-shadow-blur: 0px;
+    --ess-content-shadow-opacity: 0;
+    --ess-content-icon-size: 32px;
+    --ess-content-icon-spacing: 6px;
+    --ess-content-icon-padding: 8px;
+    --ess-content-svg-fill-color: #ef4444;
+}
+
+/* Shape-specific shadows for presets with box shadows */
+
+/* Round shape shadows for special presets */
+.ess-share-block.preset-modern-glass:not(.icon-square) .ess-share-link,
+.ess-share-block.preset-modern-glass:not(.icon-square) .ess-share-button,
+.ess-share-block.preset-modern-glass:not(.icon-square) .ess-copy-link,
+.ess-share-block.preset-modern-glass:not(.icon-square) .ess-more-button {
+    border-radius: 50% !important;
+}
+
+.ess-share-block.preset-vibrant-neon:not(.icon-square) .ess-share-link,
+.ess-share-block.preset-vibrant-neon:not(.icon-square) .ess-share-button,
+.ess-share-block.preset-vibrant-neon:not(.icon-square) .ess-copy-link,
+.ess-share-block.preset-vibrant-neon:not(.icon-square) .ess-more-button {
+    border-radius: 50% !important;
+}
+
+.ess-share-block.preset-gradient-flow:not(.icon-square) .ess-share-link,
+.ess-share-block.preset-gradient-flow:not(.icon-square) .ess-share-button,
+.ess-share-block.preset-gradient-flow:not(.icon-square) .ess-copy-link,
+.ess-share-block.preset-gradient-flow:not(.icon-square) .ess-more-button {
+    border-radius: 50% !important;
+}
+
+/* Square shape shadows for special presets */
+.ess-share-block.preset-modern-glass.icon-square .ess-share-link,
+.ess-share-block.preset-modern-glass.icon-square .ess-share-button,
+.ess-share-block.preset-modern-glass.icon-square .ess-copy-link,
+.ess-share-block.preset-modern-glass.icon-square .ess-more-button {
+    border-radius: 4px !important;
+}
+
+.ess-share-block.preset-vibrant-neon.icon-square .ess-share-link,
+.ess-share-block.preset-vibrant-neon.icon-square .ess-share-button,
+.ess-share-block.preset-vibrant-neon.icon-square .ess-copy-link,
+.ess-share-block.preset-vibrant-neon.icon-square .ess-more-button {
+    border-radius: 4px !important;
+}
+
+.ess-share-block.preset-gradient-flow.icon-square .ess-share-link,
+.ess-share-block.preset-gradient-flow.icon-square .ess-share-button,
+.ess-share-block.preset-gradient-flow.icon-square .ess-copy-link,
+.ess-share-block.preset-gradient-flow.icon-square .ess-more-button {
+    border-radius: 8px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ess-share-block {
+        --ess-content-icon-size: 28px;
+        --ess-content-icon-spacing: 4px;
+        --ess-content-container-padding: 8px;
+    }
+}
+.ess-share-block[data-use-platform-colors="true"] .ess-share-link.xcom { background-color: #1da1f2; }
+.ess-share-block[data-use-platform-colors="true"] .ess-share-link.linkedin { background-color: #0077b5; }
+.ess-share-block[data-use-platform-colors="true"] .ess-share-link.pinterest { background-color: #bd081c; }
+.ess-share-block[data-use-platform-colors="true"] .ess-share-link.whatsapp { background-color: #25d366; }
+.ess-share-block[data-use-platform-colors="true"] .ess-share-link.telegram { background-color: #0088cc; }
+.ess-share-block[data-use-platform-colors="true"] .ess-share-link.reddit { background-color: #ff4500; }
+.ess-share-block[data-use-platform-colors="true"] .ess-share-link.tumblr { background-color: #001935; }
+
+/* Custom icon colors when platform colors disabled */
+.ess-share-block[data-use-platform-colors="false"] .ess-share-link {
+    background-color: var(--ess-content-icon-color);
+}
+
+.ess-share-block[data-use-platform-colors="false"] .ess-share-link svg {
+    fill: var(--ess-content-svg-fill-color);
+}
+
+/* Hover animations */
+.ess-share-block[data-hover-animation="scale"] .ess-share-link:hover,
+.ess-share-block[data-hover-animation="scale"] .ess-share-button:hover,
+.ess-share-block[data-hover-animation="scale"] .ess-copy-link:hover,
+.ess-share-block[data-hover-animation="scale"] .ess-more-button:hover {
+    transform: scale(1.1);
+}
+
+.ess-share-block[data-hover-animation="lift"] .ess-share-link:hover,
+.ess-share-block[data-hover-animation="lift"] .ess-share-button:hover,
+.ess-share-block[data-hover-animation="lift"] .ess-copy-link:hover,
+.ess-share-block[data-hover-animation="lift"] .ess-more-button:hover {
+    transform: translateY(-3px);
+}
+
+.ess-share-block[data-hover-animation="bounce"] .ess-share-link:hover,
+.ess-share-block[data-hover-animation="bounce"] .ess-share-button:hover,
+.ess-share-block[data-hover-animation="bounce"] .ess-copy-link:hover,
+.ess-share-block[data-hover-animation="bounce"] .ess-more-button:hover {
+    animation: bounce-hover var(--ess-content-animation-duration) ease;
+}
+
+.ess-share-block[data-hover-animation="glow"] .ess-share-link:hover,
+.ess-share-block[data-hover-animation="glow"] .ess-share-button:hover,
+.ess-share-block[data-hover-animation="glow"] .ess-copy-link:hover,
+.ess-share-block[data-hover-animation="glow"] .ess-more-button:hover {
+    transform: scale(1.05);
+}
+
+@keyframes bounce-hover {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Preset-specific styles */
+
+/* Modern Glass Preset */
+.ess-share-block.preset-modern-glass {
+    --ess-content-bg-color: #ffffff;
+    --ess-content-border-width: 1px;
+    --ess-content-border-color: #e2e8f0;
+    --ess-content-border-radius: 12px;
+    --ess-content-shadow-blur: 20px;
+    --ess-content-shadow-opacity: 0.1;
+    --ess-content-icon-size: 32px;
+    --ess-content-icon-spacing: 8px;
+    --ess-content-icon-padding: 10px;
+    --ess-content-hover-animation: scale;
+    --ess-content-use-platform-colors: 1;
+}
+
+/* Vibrant Neon Preset */
+.ess-share-block.preset-vibrant-neon {
+    --ess-content-bg-color: #1a1a1a;
+    --ess-content-border-width: 2px;
+    --ess-content-border-color: #029651
+    --ess-content-border-radius: 8px;
+    --ess-content-shadow-blur: 25px;
+    --ess-content-shadow-opacity: 0.4;
+    --ess-content-icon-size: 36px;
+    --ess-content-icon-spacing: 10px;
+    --ess-content-icon-padding: 12px;
+    --ess-content-hover-animation: glow;
+    --ess-content-use-platform-colors: 0;
+    --ess-content-icon-color: #029651;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ess-share-block {
+        --ess-content-icon-size: 28px;
+        --ess-content-icon-spacing: 4px;
+        --ess-content-container-padding: 8px;
+    }
+}

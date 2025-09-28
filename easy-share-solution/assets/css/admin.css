@@ -1,0 +1,361 @@
+/* Easy Share Solution Admin Styles */
+
+/* Design Tab Styles */
+.ess-design-accordion {
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.ess-accordion-section {
+    border-bottom: 1px solid #eee;
+}
+
+.ess-accordion-section:last-child {
+    border-bottom: none;
+}
+
+.ess-accordion-header {
+    padding: 15px 20px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    color: #23282d;
+    transition: background-color 0.2s ease;
+}
+
+.ess-accordion-header:hover {
+    background: #f1f1f1;
+}
+
+.ess-accordion-header.active {
+    background: #0073aa;
+    color: #fff;
+}
+
+.ess-accordion-toggle {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+.ess-accordion-header.active .ess-accordion-toggle {
+    transform: rotate(180deg);
+}
+
+.ess-accordion-content {
+    padding: 20px;
+    display: none;
+    background: #fff;
+}
+
+.ess-accordion-content.active {
+    display: block;
+}
+
+/* Preset Selector Styles */
+.ess-preset-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.ess-preset-option {
+    position: relative;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 15px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #fff;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ess-preset-option:hover {
+    border-color: #0073aa;
+    box-shadow: 0 2px 8px rgba(0,115,170,0.2);
+    transform: translateY(-2px);
+}
+
+.ess-preset-option.selected {
+    border-color: #0073aa;
+    background: #f0f8ff;
+    box-shadow: 0 3px 12px rgba(0,115,170,0.3);
+}
+
+.ess-preset-option .preset-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: #23282d;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+
+.ess-preset-option .preset-description {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.3;
+}
+
+.ess-preset-option.selected .preset-name {
+    color: #0073aa;
+}
+
+.ess-preset-option::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+.ess-preset-option.selected::before {
+    background: #0073aa;
+    border-color: #0073aa;
+}
+
+.ess-preset-option.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Preview Controls */
+.ess-preview-controls {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.ess-preview-controls .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ess-preview-controls .button .dashicons {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.ess-save-settings {
+    background: #0073aa;
+    border-color: #0073aa;
+    color: #fff;
+}
+
+.ess-save-settings:hover {
+    background: #005a87;
+    border-color: #005a87;
+}
+
+.ess-save-settings:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Field Row Enhancements */
+.ess-field-row {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.ess-field-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.ess-field-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #23282d;
+    display: block;
+}
+
+.ess-field-description {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+/* Range Slider Enhancements */
+.ess-range-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ess-range-slider {
+    flex: 1;
+    margin: 0;
+}
+
+.ess-range-value {
+    display: inline-block;
+    background: #0073aa;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Color Picker Enhancements */
+.wp-picker-container {
+    margin-top: 5px;
+}
+
+/* Select Field Enhancements */
+.ess-field-row select {
+    min-width: 150px;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* Input Field Enhancements */
+.ess-field-row input[type="text"],
+.ess-field-row input[type="number"] {
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    min-width: 150px;
+}
+
+/* Checkbox Styles */
+.ess-field-row input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Notification Styles */
+.ess-notification {
+    position: fixed;
+    top: 32px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    z-index: 999999;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+}
+
+.ess-notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.ess-notification.success {
+    background: #46b450;
+}
+
+.ess-notification.error {
+    background: #dc3232;
+}
+
+.ess-notification.warning {
+    background: #ffb900;
+    color: #23282d;
+}
+
+/* Admin Page Layout */
+.wrap h1 {
+    margin-bottom: 20px;
+}
+
+.ess-admin-nav {
+    border-bottom: 1px solid #ccd0d4;
+    margin-bottom: 20px;
+}
+
+.ess-admin-nav .nav-tab {
+    font-size: 14px;
+    padding: 10px 15px;
+}
+
+.ess-tab-content {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ess-preset-selector {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    
+    .ess-preset-option {
+        padding: 10px 8px;
+        min-height: 70px;
+    }
+    
+    .ess-preview-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .ess-preview-controls .button {
+        justify-content: center;
+    }
+}
+
+/* Loading States */
+.ess-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.ess-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #ccc;
+    border-top-color: #0073aa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

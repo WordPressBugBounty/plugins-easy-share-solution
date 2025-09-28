@@ -1,0 +1,331 @@
+/**
+ * Custom Color Picker Styles
+ * Standalone color picker component without WordPress dependencies
+ */
+
+.ess-custom-color-picker {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    .ess-color-label {
+        font-weight: 600;
+        font-size: 13px;
+        color: #1e1e1e;
+        margin: 0;
+    }
+    
+    .ess-color-trigger-wrapper {
+        position: relative;
+    }
+    
+    .ess-color-trigger {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        background: #ffffff;
+        border: 1px solid #dcdcde;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        width: 100%;
+        min-height: 40px;
+        
+        &:hover {
+            border-color: #757575;
+        }
+        
+        &:focus {
+            outline: none;
+            border-color: #007cba;
+            box-shadow: 0 0 0 1px #007cba;
+        }
+    }
+    
+    .ess-color-preview {
+        flex-shrink: 0;
+    }
+    
+    .ess-color-swatch {
+        width: 24px;
+        height: 24px;
+        border-radius: 3px;
+        border: 1px solid #dcdcde;
+        background: #ffffff;
+        background-image: 
+            linear-gradient(45deg, #ddd 25%, transparent 25%), 
+            linear-gradient(-45deg, #ddd 25%, transparent 25%), 
+            linear-gradient(45deg, transparent 75%, #ddd 75%), 
+            linear-gradient(-45deg, transparent 75%, #ddd 75%);
+        background-size: 8px 8px;
+        background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+    }
+    
+    .ess-color-text {
+        font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+        font-size: 13px;
+        color: #1e1e1e;
+        flex: 1;
+        text-align: left;
+        text-transform: uppercase;
+    }
+    
+    .ess-color-arrow {
+        flex-shrink: 0;
+        color: #757575;
+        transition: transform 0.2s ease;
+    }
+    
+    .ess-color-trigger:hover .ess-color-arrow {
+        color: #1e1e1e;
+    }
+}
+
+/* Color Picker Popup */
+.ess-color-picker-popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999999;
+    background: #ffffff;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    min-width: 320px;
+    max-width: 100vw;
+    margin-top: 4px;
+    pointer-events: auto;
+    user-select: none;
+    
+    // Ensure popup stays within viewport
+    @media (max-width: 480px) {
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 280px;
+    }
+    
+    // Prevent any interference from parent elements
+    * {
+        pointer-events: auto;
+    }
+}
+
+.ess-color-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f1;
+    background: #f9f9f9;
+    border-radius: 4px 4px 0 0;
+    
+    .ess-color-picker-title {
+        font-weight: 600;
+        font-size: 14px;
+        color: #1e1e1e;
+    }
+    
+    .ess-color-close-btn {
+        background: none;
+        border: none;
+        padding: 4px;
+        cursor: pointer;
+        color: #757575;
+        border-radius: 2px;
+        transition: all 0.2s ease;
+        
+        &:hover {
+            color: #1e1e1e;
+            background: #f0f0f1;
+        }
+        
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 1px #007cba;
+        }
+        
+        svg {
+            display: block;
+        }
+    }
+}
+
+.ess-color-picker-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Color Input Section */
+.ess-color-input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    label {
+        font-weight: 600;
+        font-size: 13px;
+        color: #1e1e1e;
+        margin: 0;
+    }
+}
+
+.ess-color-input-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.ess-color-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    background: #ffffff;
+    transition: border-color 0.2s ease;
+    
+    &:focus {
+        outline: none;
+        border-color: #007cba;
+        box-shadow: 0 0 0 1px #007cba;
+    }
+    
+    &.invalid {
+        border-color: #d63638;
+        color: #d63638;
+    }
+    
+    &::placeholder {
+        color: #757575;
+        text-transform: none;
+    }
+}
+
+.ess-color-native-picker {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+    
+    &::-webkit-color-swatch-wrapper {
+        padding: 0;
+        border: none;
+        border-radius: 3px;
+    }
+    
+    &::-webkit-color-swatch {
+        border: none;
+        border-radius: 3px;
+    }
+    
+    &::-moz-color-swatch {
+        border: none;
+        border-radius: 3px;
+    }
+    
+    &:focus {
+        outline: none;
+        border-color: #007cba;
+        box-shadow: 0 0 0 1px #007cba;
+    }
+}
+
+/* Color Presets Section */
+.ess-color-presets-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+    label {
+        font-weight: 600;
+        font-size: 13px;
+        color: #1e1e1e;
+        margin: 0;
+    }
+}
+
+.ess-color-presets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(32px, 1fr));
+    gap: 8px;
+    max-width: 100%;
+}
+
+.ess-color-preset {
+    width: 32px;
+    height: 32px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    
+    &:hover {
+        transform: scale(1.1);
+        border-color: #757575;
+    }
+    
+    &:focus {
+        outline: none;
+        border-color: #007cba;
+        box-shadow: 0 0 0 1px #007cba;
+    }
+    
+    &.active {
+        border-color: #007cba;
+        box-shadow: 0 0 0 2px #007cba;
+        transform: scale(1.05);
+        
+        &::after {
+            content: "✓";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+        }
+    }
+}
+
+/* Color Picker Footer */
+.ess-color-picker-footer {
+    padding: 12px 16px;
+    border-top: 1px solid #f0f0f1;
+    background: #f9f9f9;
+    border-radius: 0 0 4px 4px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ess-color-done-btn {
+    padding: 8px 16px;
+    background: #007cba;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+        background: #005a87;
+    }
+    
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #007cba;
+    }
+}

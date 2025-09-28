@@ -1,0 +1,175 @@
+.ess-notice {
+    border-left: 4px solid #00a0d2 !important;
+    padding: 0 !important;
+    margin: 20px 0 !important;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    border-radius: 6px !important;
+    position: relative !important;
+}
+
+.ess-notice.notice-success {
+    border-left-color: #46b450 !important;
+}
+
+.ess-notice-content {
+    padding: 20px !important;
+}
+
+.ess-notice-header {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 15px !important;
+    margin-bottom: 20px !important;
+    position: relative !important;
+}
+
+.ess-notice-icon {
+    font-size: 24px !important;
+    line-height: 1 !important;
+    margin-top: 2px !important;
+}
+
+.ess-notice-text {
+    flex: 1 !important;
+}
+
+.ess-notice-title {
+    margin: 0 0 8px 0 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #1d2327 !important;
+}
+
+.ess-notice-message {
+    margin: 0 0 15px 0 !important;
+    color: #50575e !important;
+    line-height: 1.5 !important;
+}
+
+.ess-notice-actions {
+    display: flex !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+    padding-top: 15px !important;
+    border-top: 1px solid #e8eaeb !important;
+}
+
+.ess-early-bird-info {
+    margin: 10px 0 0 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    flex-wrap: wrap !important;
+}
+
+.ess-price-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24) !important;
+    color: white !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+
+.ess-old-price {
+    text-decoration: line-through !important;
+    opacity: 0.8 !important;
+    font-size: 12px !important;
+}
+
+.ess-new-price {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+}
+
+.ess-discount {
+    background: rgba(255,255,255,0.2) !important;
+    padding: 2px 6px !important;
+    border-radius: 10px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.ess-limited-text {
+    color: #d63031 !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+}
+
+.ess-pro-button {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.1) !important;
+    box-shadow: 0 2px 4px rgba(238, 90, 36, 0.3) !important;
+    transition: all 0.3s ease !important;
+}
+
+.ess-pro-button:hover {
+    background: linear-gradient(135deg, #ee5a24, #d63031) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(238, 90, 36, 0.4) !important;
+    color: white !important;
+}
+
+.ess-maybe-later {
+    background: transparent !important;
+    border: 1px solid #ccd0d4 !important;
+    color: #646970 !important;
+    transition: all 0.2s ease !important;
+}
+
+.ess-maybe-later:hover {
+    background: #f6f7f7 !important;
+    border-color: #8c8f94 !important;
+    color: #1d2327 !important;
+}
+
+.ess-dismiss-notice {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    background: none !important;
+    border: none !important;
+    color: #787c82 !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    padding: 5px !important;
+    transition: color 0.2s ease !important;
+}
+
+.ess-dismiss-notice:hover {
+    color: #1d2327 !important;
+}
+
+/* Pulse animation */
+.pulse {
+    animation: pulse 1s ease-in-out !important;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 782px) {
+    .ess-notice-header {
+        flex-direction: column !important;
+    }
+    
+    .ess-notice-actions {
+        justify-content: flex-start !important;
+    }
+    
+    .ess-early-bird-info {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+    }
+}
