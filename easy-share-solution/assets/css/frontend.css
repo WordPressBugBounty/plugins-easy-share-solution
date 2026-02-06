@@ -1961,6 +1961,7 @@ body.ess-popup-open {
 /* Individual button background colors */
 .ess-floating-panel .ess-share-button {
     background: var(--ess-icon-secondary-color);
+    box-sizing: border-box;
 }
 
 .ess-floating-panel.ess-shape-circle .ess-share-button {

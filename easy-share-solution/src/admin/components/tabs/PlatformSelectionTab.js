@@ -419,49 +419,59 @@ const PlatformSelectionTab = ({ settings, updateSetting, isProActive, hasProFeat
                     )}
 
                     {/* Add More Platforms */}
-                    <Card>
-                        <CardBody>
-                            <div className="ess-platform-add-section">
-                                <h3>{__('Add Platforms', 'easy-share-solution')}</h3>
-                                
-                                <Button 
-                                    isPrimary 
-                                    onClick={() => setShowMoreModal(true)}
-                                    className="ess-add-platforms-btn"
-                                >
-                                    {__('+ Add More Platforms', 'easy-share-solution')}
-                                </Button>
+                    <ProFeature
+                        isProActive={isProActive}
+                        feature="add_more_platforms"
+                        hasProFeature={hasProFeature}
+                        title={__('Unlock More Platforms', 'easy-share-solution')}
+                        description={__('Access 60+ social media platforms including Discord, Twitch, Medium, WordPress, Blogger, and many more. Expand your reach with Pro!', 'easy-share-solution')}
+                        overlay={true}
+                    >
+                        <Card>
+                            <CardBody>
+                                <div className="ess-platform-add-section">
+                                    <h3>{__('Add Platforms', 'easy-share-solution')}</h3>
+                                    
+                                    <Button 
+                                        isPrimary 
+                                        onClick={() => setShowMoreModal(true)}
+                                        className="ess-add-platforms-btn"
+                                        disabled={!isProActive}
+                                    >
+                                        {__('+ Add More Platforms', 'easy-share-solution')}
+                                    </Button>
 
-                                {/* Available platforms preview */}
-                                <div className="ess-available-platforms-preview">
-                                    {availablePlatforms
-                                        .filter(platform => !selectedPlatforms.includes(platform.id))
-                                        .slice(0, 6)
-                                        .map(platform => (
-                                            <div
-                                                key={platform.id}
-                                                className="ess-platform-preview-item"
-                                                onClick={() => handlePlatformToggle(platform.id, true)}
-                                            >
-                                                <div 
-                                                    className="ess-platform-preview-icon"
-                                                    style={{ backgroundColor: platform.color || '#007cba' }}
+                                    {/* Available platforms preview */}
+                                    <div className="ess-available-platforms-preview">
+                                        {availablePlatforms
+                                            .filter(platform => !selectedPlatforms.includes(platform.id))
+                                            .slice(0, 6)
+                                            .map(platform => (
+                                                <div
+                                                    key={platform.id}
+                                                    className="ess-platform-preview-item"
+                                                    onClick={() => handlePlatformToggle(platform.id, true)}
                                                 >
-                                                    {platform.name.charAt(0).toUpperCase()}
+                                                    <div 
+                                                        className="ess-platform-preview-icon"
+                                                        style={{ backgroundColor: platform.color || '#007cba' }}
+                                                    >
+                                                        {platform.name.charAt(0).toUpperCase()}
+                                                    </div>
+                                                    <span>{platform.name}</span>
                                                 </div>
-                                                <span>{platform.name}</span>
+                                            ))
+                                        }
+                                        {availablePlatforms.filter(platform => !selectedPlatforms.includes(platform.id)).length > 6 && (
+                                            <div className="ess-platform-preview-more">
+                                                +{availablePlatforms.filter(platform => !selectedPlatforms.includes(platform.id)).length - 6} {__('more', 'easy-share-solution')}
                                             </div>
-                                        ))
-                                    }
-                                    {availablePlatforms.filter(platform => !selectedPlatforms.includes(platform.id)).length > 6 && (
-                                        <div className="ess-platform-preview-more">
-                                            +{availablePlatforms.filter(platform => !selectedPlatforms.includes(platform.id)).length - 6} {__('more', 'easy-share-solution')}
-                                        </div>
-                                    )}
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        </CardBody>
-                    </Card>
+                            </CardBody>
+                        </Card>
+                    </ProFeature>
 
                     {/* Modal for adding platforms */}
                     {showMoreModal && (

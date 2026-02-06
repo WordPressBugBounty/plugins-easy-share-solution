@@ -26,7 +26,7 @@ class Easy_Share_Notices {
             'button_class' => 'button-primary'
         ],
         'pro_upgrade' => [
-            'key' => 'ess_pro_notice_dismissed1',
+            'key' => 'ess_pro_notice_dismissed2',
             'priority' => 2,
             'type' => 'success',
             'icon' => '⚡',
@@ -58,21 +58,21 @@ class Easy_Share_Notices {
                 'secondary_button_url' => admin_url('admin.php?page=easy-share-solution&tab=analytics')
             ],
             'pro_upgrade' => [
-                'key' => 'ess_pro_notice_dismissed1',
+                'key' => 'ess_pro_notice_dismissed2',
                 'priority' => 2,
                 'type' => 'success',
-                'icon' => '⚡',
-                'title' => __('Early Bird Special - Limited Time!', 'easy-share-solution'),
-                'message' => __('Unlock the full power of Easy Share Solution Pro! Get advanced analytics, premium designs, and exclusive features. <strong>Special launch price: Only $19</strong> (regular $49) - Limited to first 100 customers!', 'easy-share-solution'),
-                'button_text' => __('Get Pro Now - Only $19!', 'easy-share-solution'),
+                'icon' => '🎯',
+                'title' => __('Special Discount - Upgrade to Pro Today!', 'easy-share-solution'),
+                'message' => __('Transform your social sharing strategy! <strong>Pro features include:</strong> Real-time analytics dashboard, 15+ premium icon designs, A/B testing, custom share messages, priority support, and advanced click tracking. <strong>Limited time: Just $19</strong> instead of $49!', 'easy-share-solution'),
+                'button_text' => __('Upgrade to Pro - Save $30!', 'easy-share-solution'),
                 'button_url' => 'https://wpthemespace.com/product/easy-share-solution/#pricing',
                 'button_class' => 'button-primary ess-pro-button',
                 'maybe_later_text' => __('Maybe Later', 'easy-share-solution'),
                 'price_info' => [
                     'old_price' => '$49',
                     'new_price' => '$19',
-                    'discount' => __('61% OFF', 'easy-share-solution'),
-                    'limited_text' => __('⏰ Limited to first 100 customers only!', 'easy-share-solution')
+                    'discount' => __('Save 61%', 'easy-share-solution'),
+                    'limited_text' => __('⏰ Special discount expires soon - Limited availability!', 'easy-share-solution')
                 ],
                 'countdown' => true
             ]

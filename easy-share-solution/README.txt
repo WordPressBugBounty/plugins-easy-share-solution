@@ -2,14 +2,14 @@
 Contributors: nalam
 Donate link: http://wpthemespace.com/donation/
 Tags: social-sharing, share-buttons, social-media, social-widget, analytics
-Requires at least: 5.0
-Requires PHP: 7.0
+Requires at least: 6.0
+Requires PHP: 7.4
 Stable tag: trunk
-Tested up to: 6.8
+Tested up to: 6.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The most powerful and user-friendly social sharing plugin for WordPress. Beautiful share buttons, advanced analytics, and seamless integration with modern dashboard.
+A powerful, easy-to-use WordPress social sharing plugin with modern share buttons, built-in analytics, and smooth dashboard integration.
 
 == Description ==
 
@@ -21,7 +21,7 @@ We've built this plugin with both beginners and advanced users in mind. Whether 
 
 **✨ Key Features:**
 
-🌟 **63+ Social Media Platforms** - Share to Facebook, Twitter/X, LinkedIn, Pinterest, WhatsApp, Instagram, Reddit, Telegram, and many more popular platforms.
+🌟 **63+ Social Media Platforms** - Share to Facebook, Twitter/X.com, LinkedIn, Pinterest, WhatsApp, Instagram, Reddit, Telegram, Tiktok, youtube, email, messenger, viber, snapchat, wechat, evernote, github, discord, baidu, behance and many more popular platforms.
 
 📊 **Advanced Analytics Dashboard** - Track your sharing performance with detailed insights. See which content gets shared most, which platforms drive the most traffic, and optimize your social strategy.
 
@@ -140,6 +140,10 @@ Absolutely! Easy Share Solution is fully translation-ready and supports right-to
 8. **Widget Integration** - Easy-to-use widgets for sidebars, footers, and custom widget areas
 
 == Changelog ==
+
+= 2.0.1 =
+** icons padding issue fixed**
+** Missing svg icons added**
 
 = 2.0.0 =
 **🚀 Major Update - Complete Plugin Redesign!**

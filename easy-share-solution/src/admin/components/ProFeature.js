@@ -43,6 +43,7 @@ const ProFeature = ({
             'popup_style_presets': __('Access premium popup style presets.', 'easy-share-solution'),
             'design_presets': __('Access premium design presets and themes.', 'easy-share-solution'),
             'platform_drag_sort': __('Drag and drop to reorder platforms.', 'easy-share-solution'),
+            'add_more_platforms': __('Add unlimited platforms from our library of 60+ social networks including Discord, Twitch, Medium, WordPress, and more.', 'easy-share-solution'),
             'qr_code_button': __('Add QR code sharing option.', 'easy-share-solution'),
             'print_button': __('Add print sharing option.', 'easy-share-solution'),
             'advanced_settings': __('Access advanced configuration options.', 'easy-share-solution')
