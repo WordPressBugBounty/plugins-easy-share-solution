@@ -29,6 +29,8 @@ class EasyShare_General_Settings {
         'show_count' => false,
         'analytics_enabled' => false,
         'floating_panel_auto_hide' => true,
+        'floating_panel_visitor_hide_enabled' => true,
+        'floating_panel_visitor_hide_duration' => 15,
         'front_page_display' => true,
         
         // Display Positions
@@ -311,8 +313,25 @@ class EasyShare_General_Settings {
         $allowed_modes = array('icons_only', 'icons_text');
         $sanitized['popup_display_mode'] = isset($input['popup_display_mode']) && in_array($input['popup_display_mode'], $allowed_modes) ? 
             $input['popup_display_mode'] : 'icons_text';
+
+        $sanitized['floating_panel_visitor_hide_enabled'] = isset($input['floating_panel_visitor_hide_enabled']) ? (bool) $input['floating_panel_visitor_hide_enabled'] : true;
+        $hide_duration = isset($input['floating_panel_visitor_hide_duration']) ? absint($input['floating_panel_visitor_hide_duration']) : 15;
+        $allowed_hide_durations = self::is_pro_active() ? array(1, 3, 7) : array(15);
+        $sanitized['floating_panel_visitor_hide_duration'] = in_array($hide_duration, $allowed_hide_durations, true) ? $hide_duration : $allowed_hide_durations[0];
         
         return $sanitized;
+    }
+
+    /**
+     * Check if Pro plugin is active for Pro-only settings.
+     */
+    private static function is_pro_active() {
+        if (!get_option('has_easy_ss_pro', false)) {
+            return false;
+        }
+
+        $active_plugins = (array) apply_filters('active_plugins', get_option('active_plugins'));
+        return in_array('easy-share-solution-pro/easy-share-solution-pro.php', $active_plugins, true);
     }
     
     /**

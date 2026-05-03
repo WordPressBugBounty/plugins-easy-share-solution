@@ -24,7 +24,7 @@ class EasyShare_Settings_Loader {
      * Constructor
      */
     public function __construct() {
-        add_action('init', array($this, 'load_settings_classes'));
+        $this->load_settings_classes();
         add_action('rest_api_init', array($this, 'register_all_rest_routes'));
     }
     
@@ -34,10 +34,10 @@ class EasyShare_Settings_Loader {
     public function load_settings_classes() {
         // Define settings files and their class names
         $settings_files = array(
-            'class-general-settings.php' => 'General_Settings',
-            'class-platform-settings.php' => 'Platform_Settings',
-            'class-design-settings.php' => 'Design_Settings',
-            'class-icon-presets-settings.php' => 'Icon_Presets_Settings',
+            'class-general-settings.php' => 'EasyShare_General_Settings',
+            'class-platform-settings.php' => 'EasyShare_Platform_Settings',
+            'class-design-settings.php' => 'EasyShare_Design_Settings',
+            'class-icon-presets-settings.php' => 'EasyShare_Icon_Presets_Settings',
             'class-analytics-settings.php' => 'EasyShare_Analytics_Settings',
             'class-advanced-settings.php' => 'Advanced_Settings',
         );
@@ -122,19 +122,84 @@ class EasyShare_Settings_Loader {
             return new WP_Error('no_params', 'No parameters provided', array('status' => 400));
         }
         
-        // Sanitize and update settings
-        $sanitized_settings = EasyShare_Settings::sanitize_settings($params);
-        $updated = EasyShare_Settings::update_settings($sanitized_settings);
+        $current_settings = EasyShare_Settings::get_settings();
+        $settings_to_save = array_replace_recursive($current_settings, $params);
+        $sanitized_settings = $this->sanitize_all_settings($settings_to_save);
+        $updated = $this->update_sanitized_settings($sanitized_settings);
         
-        if ($updated) {
+        if ($updated !== false) {
+            $all_settings = EasyShare_Settings::get_settings();
+
             return rest_ensure_response(array(
                 'success' => true,
                 'message' => 'All settings updated successfully',
-                'data' => $sanitized_settings,
+                'data' => $all_settings,
             ));
         } else {
             return new WP_Error('update_failed', 'Failed to update settings', array('status' => 500));
         }
+    }
+
+    /**
+     * Sanitize all settings through their module-specific sanitizers.
+     */
+    private function sanitize_all_settings($settings) {
+        $sanitized = array();
+
+        if (class_exists('EasyShare_General_Settings')) {
+            $sanitized = array_merge($sanitized, EasyShare_General_Settings::sanitize_general_settings($settings));
+        }
+
+        if (class_exists('EasyShare_Platform_Settings')) {
+            $sanitized = array_merge($sanitized, EasyShare_Platform_Settings::sanitize_platform_settings($settings));
+        }
+
+        if (class_exists('EasyShare_Design_Settings')) {
+            $sanitized = array_merge($sanitized, EasyShare_Design_Settings::sanitize_design_settings($settings));
+        }
+
+        if (class_exists('EasyShare_Icon_Presets_Settings')) {
+            $sanitized = array_merge($sanitized, EasyShare_Icon_Presets_Settings::sanitize_icon_presets_settings($settings));
+        }
+
+        if (class_exists('EasyShare_Analytics_Settings')) {
+            $sanitized = array_merge($sanitized, EasyShare_Analytics_Settings::sanitize_analytics_settings($settings));
+        }
+
+        if (class_exists('Advanced_Settings')) {
+            $sanitized = array_merge($sanitized, Advanced_Settings::sanitize_settings($settings));
+        }
+
+        return EasyShare_Settings::sanitize_settings($sanitized);
+    }
+
+    /**
+     * Persist sanitized settings to the legacy option and modular option stores.
+     */
+    private function update_sanitized_settings($settings) {
+        $updated = EasyShare_Settings::update_settings($settings);
+
+        if (class_exists('EasyShare_General_Settings')) {
+            EasyShare_General_Settings::update_settings($settings);
+        }
+
+        if (class_exists('EasyShare_Platform_Settings')) {
+            EasyShare_Platform_Settings::update_settings($settings);
+        }
+
+        if (class_exists('EasyShare_Design_Settings')) {
+            EasyShare_Design_Settings::update_settings($settings);
+        }
+
+        if (class_exists('EasyShare_Icon_Presets_Settings')) {
+            EasyShare_Icon_Presets_Settings::update_settings($settings);
+        }
+
+        if (class_exists('EasyShare_Analytics_Settings')) {
+            EasyShare_Analytics_Settings::update_settings($settings);
+        }
+
+        return $updated;
     }
     
     /**

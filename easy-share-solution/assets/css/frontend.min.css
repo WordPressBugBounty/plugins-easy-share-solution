@@ -619,6 +619,12 @@ body.ess-colors-applied {
 }
 
 /* Floating Panel Styles */
+.ess-floating-panel.ess-loading:not(.ess-ready) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
 .ess-floating-panel {
     position: fixed;
     top: 50%;
@@ -631,6 +637,12 @@ body.ess-colors-applied {
     padding: 0;
     transition: var(--ess-transition);
     isolation: isolate;
+
+    &.ess-loading:not(.ess-ready) {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
 
     &.ess-position-left {
         left: 20px;
@@ -689,6 +701,42 @@ body.ess-colors-applied {
         max-height: 400px;
         overflow: visible;
     }
+}
+
+.ess-panel-dismiss {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 22px;
+    height: 22px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #1f2937;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+
+.ess-panel-toggle {
+    position: relative;
+}
+
+.ess-floating-panel.visitor-can-hide .ess-panel-dismiss,
+.ess-floating-panel.ess-visitor-hide-enabled.panel-close .ess-panel-dismiss,
+.ess-floating-panel[data-visitor-hide-enabled="true"].panel-close .ess-panel-dismiss {
+    display: inline-flex;
+}
+
+.ess-panel-dismiss:hover,
+.ess-panel-dismiss:focus {
+    color: #ffffff;
+    background: #111827;
+    text-decoration: none;
 }
 
 /* New Floating Panel Features */

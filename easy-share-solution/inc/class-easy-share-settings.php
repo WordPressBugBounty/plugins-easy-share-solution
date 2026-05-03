@@ -55,8 +55,8 @@ class EasyShare_Settings {
         }
         
         // Merge with design settings if available
-        if (class_exists('Design_Settings')) {
-            $design_settings = Design_Settings::get_settings();
+        if (class_exists('EasyShare_Design_Settings')) {
+            $design_settings = EasyShare_Design_Settings::get_settings();
             // Merge design settings into main settings
             $settings = array_merge($settings, $design_settings);
         }
@@ -92,6 +92,8 @@ class EasyShare_Settings {
             'floating_panel_icons_display' => 'expand',
             'floating_panel_front_page' => true,
             'floating_panel_home_page' => false,
+            'floating_panel_visitor_hide_enabled' => true,
+            'floating_panel_visitor_hide_duration' => 15,
             
             // Design Settings
             'floating_design' => array(

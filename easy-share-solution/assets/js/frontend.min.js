@@ -168,6 +168,7 @@
             $(document).on('click', '.ess-toggle-button', this.toggleFloatingPanel.bind(this));
             $(document).on('click', '.ess-more-button', this.openSharePopup.bind(this));
             $(document).on('click', '.ess-floating-more-button', this.openFloatingPopup.bind(this));
+            $(document).on('click', '.ess-panel-dismiss', this.dismissFloatingPanel.bind(this));
             $(document).on('click', '.ess-popup-close, .ess-popup-overlay', this.closeAllPopups.bind(this));
             $(document).on('click', '.ess-popup-platform', this.handlePopupShare.bind(this));
             $(document).on('keydown', this.handlePopupKeydown.bind(this));
@@ -680,9 +681,11 @@
             }
             
             // Check if panel should be hidden by default
-            const isHidden = localStorage.getItem('ess_floating_panel_hidden') === 'true';
+            const isHidden = this.getCookie('ess_floating_panel_hidden') === 'true';
             if (isHidden) {
                 $panel.hide();
+                $panel.removeClass('ess-loading').addClass('ess-ready');
+                return;
             }
             
             // Handle responsive state loading
@@ -718,6 +721,10 @@
             } else if (displayMode === 'expand') {
                 this.initExpandMode($panel);
             }
+
+            this.syncVisitorHideState($panel);
+
+            $panel.removeClass('ess-loading').addClass('ess-ready');
             
             // Initialize scroll-based hiding for both mobile and desktop
             // Only if auto-hide-scroll is enabled
@@ -725,6 +732,55 @@
             if (autoHideScroll === true || autoHideScroll === 'true') {
                 this.initScrollHide($panel);
             }
+        }
+
+        syncVisitorHideState($panel) {
+            const visitorHideEnabled = $panel.hasClass('ess-visitor-hide-enabled') || $panel.data('visitor-hide-enabled') === true || $panel.data('visitor-hide-enabled') === 'true';
+
+            if (visitorHideEnabled && $panel.hasClass('panel-close')) {
+                $panel.addClass('visitor-can-hide');
+            } else {
+                $panel.removeClass('visitor-can-hide');
+            }
+        }
+
+        getCookie(name) {
+            const cookieName = name + '=';
+            const cookies = document.cookie.split(';');
+
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.indexOf(cookieName) === 0) {
+                    return decodeURIComponent(cookie.substring(cookieName.length));
+                }
+            }
+
+            return '';
+        }
+
+        setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires.toUTCString() + '; path=/; SameSite=Lax';
+        }
+
+        dismissFloatingPanel(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const $panel = $(e.currentTarget).closest('.ess-floating-panel');
+            const visitorHideEnabled = $panel.hasClass('ess-visitor-hide-enabled') || $panel.data('visitor-hide-enabled') === true || $panel.data('visitor-hide-enabled') === 'true';
+
+            if (!visitorHideEnabled) {
+                return;
+            }
+
+            const requestedHideDays = parseInt($panel.data('visitor-hide-days'), 10);
+            const hideDays = [1, 3, 7, 15].includes(requestedHideDays) ? requestedHideDays : 15;
+            this.setCookie('ess_floating_panel_hidden', 'true', hideDays);
+            $panel.stop(true, true).fadeOut(200, function() {
+                $(this).hide();
+            });
         }
 
         /**
@@ -773,7 +829,7 @@
             
             // Always start in folded state on page load
             $content.removeClass('open').addClass('ess-close').hide();
-            $panel.removeClass('panel-open').addClass('panel-close');
+            $panel.removeClass('panel-open visitor-can-hide').addClass('panel-close');
             $toggleButton.removeClass('active');
             $toggleButton.find('.ess-close-icon').hide();
             $toggleButton.find('.ess-toggle-icon').show();
@@ -804,6 +860,7 @@
             const $button = $(e.currentTarget);
             const $panel = $button.closest('.ess-floating-panel');
             const $content = $panel.find('.ess-panel-content');
+            const visitorHideEnabled = $panel.hasClass('ess-visitor-hide-enabled') || $panel.data('visitor-hide-enabled') === true || $panel.data('visitor-hide-enabled') === 'true';
             
             // Check display mode based on device type
             const deviceIsMobile = this.isMobile();
@@ -830,13 +887,16 @@
                 // Close the panel
                 $content.removeClass('open').addClass('ess-close').slideUp(300);
                 $panel.removeClass('panel-open').addClass('panel-close');
+                if (visitorHideEnabled) {
+                    $panel.addClass('visitor-can-hide');
+                }
                 $button.removeClass('active');
                 $button.find('.ess-close-icon').hide();
                 $button.find('.ess-toggle-icon').show();
             } else {
                 // Open the panel
                 $content.removeClass('ess-close').addClass('open').slideDown(300);
-                $panel.removeClass('panel-close').addClass('panel-open');
+                $panel.removeClass('panel-close visitor-can-hide').addClass('panel-open');
                 $button.addClass('active');
                 $button.find('.ess-toggle-icon').hide();
                 $button.find('.ess-close-icon').show();
@@ -885,7 +945,7 @@
                 const $toggleButton = $panel.find('.ess-toggle-button');
                 
                 $content.removeClass('ess-close').addClass('open').show();
-                $panel.removeClass('panel-close').addClass('panel-open');
+                $panel.removeClass('panel-close visitor-can-hide').addClass('panel-open');
                 $toggleButton.addClass('active');
                 $toggleButton.find('.ess-toggle-icon').hide();
                 $toggleButton.find('.ess-close-icon').show();
@@ -895,7 +955,7 @@
                 const $toggleButton = $panel.find('.ess-toggle-button');
                 
                 $content.removeClass('open').addClass('ess-close').hide();
-                $panel.removeClass('panel-open').addClass('panel-close');
+                $panel.removeClass('panel-open visitor-can-hide').addClass('panel-close');
                 $toggleButton.removeClass('active');
                 $toggleButton.find('.ess-close-icon').hide();
                 $toggleButton.find('.ess-toggle-icon').show();

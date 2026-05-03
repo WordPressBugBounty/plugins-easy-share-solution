@@ -182,6 +182,7 @@ class EasyShare_Frontend {
         
         // Get content icon design settings (separate from floating panel)
         $settings = EasyShare_Settings::get_settings();
+        $design_settings = isset($settings['floating_design']) ? $settings['floating_design'] : array();
         $content_design = isset($settings['content_icon_design']) ? $settings['content_icon_design'] : array();
         
         // Extract content icon design values with fallbacks
@@ -754,6 +755,9 @@ class EasyShare_Frontend {
         $general_settings = EasyShare_Settings::get_settings();
         $auto_hide_scroll = isset($general_settings['floating_panel_auto_hide']) ? $general_settings['floating_panel_auto_hide'] : true;
         $display_mode = isset($general_settings['floating_panel_icons_display']) ? $general_settings['floating_panel_icons_display'] : 'expand';
+        $visitor_hide_enabled = !empty($general_settings['floating_panel_visitor_hide_enabled']);
+        $visitor_hide_duration = isset($general_settings['floating_panel_visitor_hide_duration']) ? absint($general_settings['floating_panel_visitor_hide_duration']) : 15;
+        $visitor_hide_duration = in_array($visitor_hide_duration, array(1, 3, 7, 15), true) ? $visitor_hide_duration : 15;
         
         // Design preset support
         $active_preset = isset($design_settings['active_preset']) ? $design_settings['active_preset'] : '';
@@ -897,7 +901,7 @@ class EasyShare_Frontend {
         
         ob_start();
         ?>
-        <div class="ess-floating-panel ess-comprehensive-design 
+        <div class="ess-floating-panel ess-loading ess-comprehensive-design 
                     ess-position-<?php echo esc_attr($panel_position); ?>
                     ess-old-position-<?php echo esc_attr($position_type); ?>
                     ess-shape-<?php echo esc_attr($icon_shape); ?>
@@ -920,6 +924,7 @@ class EasyShare_Frontend {
                     <?php echo $show_on_mobile ? 'ess-mobile-display-' . esc_attr($mobile_icons_display) : ''; ?>
                     <?php echo !$use_platform_colors ? 'ess-use-custom-colors' : ''; ?>
                     <?php echo $show_labels ? 'ess-labels-enabled' : ''; ?>
+                    <?php echo $visitor_hide_enabled ? 'ess-visitor-hide-enabled' : ''; ?>
                     <?php echo $active_preset ? 'ess-preset-' . esc_attr($active_preset) : ''; ?>"
              style="<?php echo esc_attr($css_vars_string . $position_styles); ?>"
              data-icon-size="<?php echo esc_attr($this->convert_size_to_name($icon_size)); ?>"
@@ -930,6 +935,8 @@ class EasyShare_Frontend {
              data-auto-hide="<?php echo esc_attr($auto_hide ? 'true' : 'false'); ?>"
              data-auto-hide-delay="<?php echo esc_attr($auto_hide_delay); ?>"
              data-auto-hide-scroll="<?php echo esc_attr($auto_hide_scroll ? 'true' : 'false'); ?>"
+             data-visitor-hide-enabled="<?php echo esc_attr($visitor_hide_enabled ? 'true' : 'false'); ?>"
+             data-visitor-hide-days="<?php echo esc_attr($visitor_hide_duration); ?>"
              data-entrance-animation="<?php echo esc_attr($entrance_animation); ?>"
              data-hover-animation="<?php echo esc_attr($hover_animation); ?>"
              data-animation-duration="<?php echo esc_attr($animation_duration); ?>"
@@ -965,6 +972,11 @@ class EasyShare_Frontend {
                             </svg>
                         </span>
                     </a>
+                        <?php if ($visitor_hide_enabled): ?>
+                            <a href="#" class="ess-panel-dismiss" aria-label="<?php echo esc_attr__('Hide share panel', 'easy-share-solution'); ?>" title="<?php echo esc_attr__('Hide share panel', 'easy-share-solution'); ?>" role="button">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        <?php endif; ?>
                 </div>
                 
                 <!-- Panel Content -->
@@ -1242,7 +1254,9 @@ class EasyShare_Frontend {
             'auto_hide' => false,
             'mobile_display' => false,
             'icons_display' => 'expand',
-            'icon_size' => 32
+            'icon_size' => 32,
+            'visitor_hide_enabled' => true,
+            'visitor_hide_duration' => 15
         );
         
         $options = array_merge($defaults, $options);
@@ -1276,14 +1290,17 @@ class EasyShare_Frontend {
         
         ob_start();
         ?>
-        <div class="ess-floating-panel 
+        <div class="ess-floating-panel ess-loading 
                     ess-position-<?php echo esc_attr($horizontal_position); ?> 
                     ess-vertical-<?php echo esc_attr($vertical_position); ?>
                     <?php echo $options['auto_hide'] ? ' ess-auto-hide' : ''; ?>
                     <?php echo !$options['mobile_display'] ? ' ess-hide-mobile' : ''; ?>
+                    <?php echo $options['visitor_hide_enabled'] ? ' ess-visitor-hide-enabled' : ''; ?>
                     ess-display-<?php echo esc_attr($options['icons_display']); ?>" 
              data-style="<?php echo esc_attr($icon_style); ?>"
              data-auto-hide="<?php echo $options['auto_hide'] ? 'true' : 'false'; ?>"
+             data-visitor-hide-enabled="<?php echo esc_attr($options['visitor_hide_enabled'] ? 'true' : 'false'); ?>"
+             data-visitor-hide-days="<?php echo esc_attr(in_array(absint($options['visitor_hide_duration']), array(1, 3, 7, 15), true) ? absint($options['visitor_hide_duration']) : 15); ?>"
              style="<?php echo esc_attr($style_attr); ?>">
             
             <div class="ess-panel-toggle">
@@ -1302,6 +1319,11 @@ class EasyShare_Frontend {
                         </svg>
                     </span>
                 </a>
+                <?php if ($options['visitor_hide_enabled']): ?>
+                    <a href="#" class="ess-panel-dismiss" aria-label="<?php echo esc_attr__('Hide share panel', 'easy-share-solution'); ?>" title="<?php echo esc_attr__('Hide share panel', 'easy-share-solution'); ?>" role="button">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                <?php endif; ?>
             </div>
             
             <div class="ess-panel-content" <?php echo $options['icons_display'] === 'fold' ? 'style="display: none;"' : ''; ?>>

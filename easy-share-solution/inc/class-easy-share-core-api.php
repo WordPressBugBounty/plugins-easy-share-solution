@@ -173,7 +173,9 @@ class EasyShare_Core_Api {
      * Get pro status
      */
     public function get_pro_status($request) {
-        $is_pro = get_option('has_easy_ss_pro', false) == true;
+        $active_plugins = (array) apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
+        $is_pro = get_option('has_easy_ss_pro', false) == true
+            && in_array( 'easy-share-solution-pro/easy-share-solution-pro.php', $active_plugins );
         
         return rest_ensure_response(array(
             'is_pro' => $is_pro,

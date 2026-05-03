@@ -351,6 +351,8 @@ class Easy_Share_Notices {
      * Check if Pro version is active
      */
     private function is_pro_active() {
-        return get_option('has_easy_ss_pro', false) == true;
+        $active_plugins = (array) apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
+        return get_option('has_easy_ss_pro', false) == true
+            && in_array( 'easy-share-solution-pro/easy-share-solution-pro.php', $active_plugins );
     }
 }

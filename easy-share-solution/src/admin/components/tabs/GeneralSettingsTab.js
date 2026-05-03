@@ -10,12 +10,33 @@ import {
     SelectControl, 
     RangeControl,
     CheckboxControl,
-    ColorPicker
+    ColorPicker,
+    Button
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import ProFeature from '../ProFeature';
 
 const GeneralSettingsTab = ({ settings, updateSetting, isProActive, hasProFeature }) => {
+    const [cookieNotice, setCookieNotice] = useState('');
+    const visitorHideDuration = isProActive ? (settings.floating_panel_visitor_hide_duration || 1) : 15;
+
+    const clearVisitorHideCookie = () => {
+        const cookieName = 'ess_floating_panel_hidden';
+        const host = window.location.hostname;
+        const domains = ['', host, host.startsWith('www.') ? host.replace(/^www\./, '') : `.${host}`];
+
+        domains.forEach((domain) => {
+            const domainPart = domain ? `; domain=${domain}` : '';
+            document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; max-age=0; path=/${domainPart}; SameSite=Lax`;
+            document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; max-age=0${domainPart}; SameSite=Lax`;
+        });
+
+        localStorage.removeItem('ess_floating_panel_hidden');
+        sessionStorage.removeItem('ess_floating_panel_hidden');
+        setCookieNotice(__('Visitor hide cookie cleared for this browser.', 'easy-share-solution'));
+        setTimeout(() => setCookieNotice(''), 3000);
+    };
+
     return (
         <div className="ess-general-settings-tab">
             <Card>
@@ -155,6 +176,48 @@ const GeneralSettingsTab = ({ settings, updateSetting, isProActive, hasProFeatur
                                     __nextHasNoMarginBottom={true}
                                 />
                             </div>
+
+                            <div className="ess-setting-row">
+                                <ToggleControl
+                                    label={__('Allow Visitors to Hide Panel', 'easy-share-solution')}
+                                    help={__('Show a close button that lets visitors completely hide the floating share panel in this browser.', 'easy-share-solution')}
+                                    checked={settings.floating_panel_visitor_hide_enabled || false}
+                                    onChange={(value) => updateSetting('floating_panel_visitor_hide_enabled', value)}
+                                    __nextHasNoMarginBottom={true}
+                                />
+                            </div>
+
+                            {settings.floating_panel_visitor_hide_enabled && (
+                                <div className="ess-setting-row">
+                                    <SelectControl
+                                        label={(
+                                            <span className="ess-pro-setting-label">
+                                                {__('Visitor Hide Duration', 'easy-share-solution')}
+                                                <span className="ess-pro-label">{__('Pro', 'easy-share-solution')}</span>
+                                            </span>
+                                        )}
+                                        help={isProActive ? __('Choose how long the panel stays hidden after a visitor closes it.', 'easy-share-solution') : __('Free users use a fixed 15 day hide duration. Pro users can choose 1, 3, or 7 days.', 'easy-share-solution')}
+                                        value={String(visitorHideDuration)}
+                                        options={[
+                                            ...(isProActive ? [
+                                                { label: __('1 day', 'easy-share-solution'), value: '1' },
+                                                { label: __('3 days', 'easy-share-solution'), value: '3' },
+                                                { label: __('7 days', 'easy-share-solution'), value: '7' }
+                                            ] : [
+                                                { label: __('15 days', 'easy-share-solution'), value: '15' }
+                                            ])
+                                        ]}
+                                        disabled={!isProActive}
+                                        onChange={(value) => updateSetting('floating_panel_visitor_hide_duration', parseInt(value, 10))}
+                                        __next40pxDefaultSize={true}
+                                        __nextHasNoMarginBottom={true}
+                                    />
+                                    <Button isSecondary type="button" onClick={clearVisitorHideCookie}>
+                                        {__('Clear Hide Cookie for Testing', 'easy-share-solution')}
+                                    </Button>
+                                    {cookieNotice && <p className="ess-setting-description">{cookieNotice}</p>}
+                                </div>
+                            )}
                         </div>
                     )}
 

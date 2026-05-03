@@ -126,7 +126,9 @@ const defaultSettings = {
     floating_panel_auto_hide: true,
     floating_panel_icons_display: 'expand',
     floating_panel_front_page: true,
-    floating_panel_home_page: false
+    floating_panel_home_page: false,
+    floating_panel_visitor_hide_enabled: true,
+    floating_panel_visitor_hide_duration: 15
 };
 
 export const useSettings = () => {

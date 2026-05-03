@@ -35,6 +35,8 @@ class EasyShare_Platform_Settings {
         'floating_panel_icons_display' => 'expand',
         'floating_panel_front_page' => true,
         'floating_panel_home_page' => false,
+        'floating_panel_visitor_hide_enabled' => true,
+        'floating_panel_visitor_hide_duration' => 15,
         
         // Popup Presets Settings
         'popup_presets' => array(
@@ -323,6 +325,10 @@ class EasyShare_Platform_Settings {
         
         $sanitized['floating_panel_front_page'] = isset($input['floating_panel_front_page']) ? (bool) $input['floating_panel_front_page'] : true;
         $sanitized['floating_panel_home_page'] = isset($input['floating_panel_home_page']) ? (bool) $input['floating_panel_home_page'] : false;
+        $sanitized['floating_panel_visitor_hide_enabled'] = isset($input['floating_panel_visitor_hide_enabled']) ? (bool) $input['floating_panel_visitor_hide_enabled'] : true;
+        $hide_duration = isset($input['floating_panel_visitor_hide_duration']) ? absint($input['floating_panel_visitor_hide_duration']) : 15;
+        $allowed_hide_durations = self::is_pro_active() ? array(1, 3, 7) : array(15);
+        $sanitized['floating_panel_visitor_hide_duration'] = in_array($hide_duration, $allowed_hide_durations, true) ? $hide_duration : $allowed_hide_durations[0];
         
         // Popup presets settings
         if (isset($input['popup_presets']) && is_array($input['popup_presets'])) {
@@ -332,6 +338,18 @@ class EasyShare_Platform_Settings {
         }
         
         return $sanitized;
+    }
+
+    /**
+     * Check if Pro plugin is active for Pro-only settings.
+     */
+    private static function is_pro_active() {
+        if (!get_option('has_easy_ss_pro', false)) {
+            return false;
+        }
+
+        $active_plugins = (array) apply_filters('active_plugins', get_option('active_plugins'));
+        return in_array('easy-share-solution-pro/easy-share-solution-pro.php', $active_plugins, true);
     }
     
     /**

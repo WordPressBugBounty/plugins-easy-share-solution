@@ -273,9 +273,18 @@ class EasyShare_Admin {
     /**
      * Check if pro version is active
      */
-    private function is_pro_active() {
-        return get_option('has_easy_ss_pro', false) == true;
+   private function is_pro_active() {
+    // Check if the option is true
+    if ( ! get_option( 'has_easy_ss_pro', false ) ) {
+        return false;
     }
+
+    // Get the array of active plugins safely
+    $active_plugins = (array) apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
+    
+    // Check if the Pro plugin is in the active plugins list
+    return in_array( 'easy-share-solution-pro/easy-share-solution-pro.php', $active_plugins );
+}
     
     /**
      * Get current tab from URL parameter safely
