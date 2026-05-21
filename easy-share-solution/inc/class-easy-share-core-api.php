@@ -237,17 +237,34 @@ class EasyShare_Core_Api {
      * Track share action
      */
     public function track_share($request) {
-        $platform = $request->get_param('platform');
-        $post_id = $request->get_param('post_id');
-        $url = $request->get_param('url');
-        
-        if (!$platform || !$post_id) {
-            return new WP_Error('missing_data', 'Platform and post ID are required', array('status' => 400));
+        $platform = sanitize_key($request->get_param('platform'));
+        $post_id = absint($request->get_param('post_id'));
+        $url = esc_url_raw($request->get_param('url'));
+
+        $validation = $this->easy_share_validate_tracking_request($platform, $post_id, $url);
+        if (is_wp_error($validation)) {
+            if ('duplicate_tracking' === $validation->get_error_code()) {
+                return rest_ensure_response(array(
+                    'success' => true,
+                    'data' => array(
+                        'platform' => $platform,
+                        'count' => (int) get_post_meta($post_id, '_easy_share_count_' . $platform, true),
+                        'total' => (int) get_post_meta($post_id, '_easy_share_total', true),
+                        'post_id' => $post_id,
+                        'duplicate' => true,
+                    ),
+                ));
+            }
+
+            return $validation;
         }
-        
-        // Verify post exists
-        if (!get_post($post_id)) {
-            return new WP_Error('invalid_post', 'Post not found', array('status' => 404));
+
+        if (!$this->easy_share_check_tracking_rate_limit($post_id, $platform)) {
+            return new WP_Error(
+                'rest_rate_limited',
+                __('Too many tracking requests. Please try again later.', 'easy-share-solution'),
+                array('status' => 429)
+            );
         }
         
         // Basic tracking - increment share count
@@ -270,6 +287,8 @@ class EasyShare_Core_Api {
         if ($this->is_pro_active()) {
             $this->track_advanced_analytics($platform, $post_id, $url);
         }
+
+        $this->easy_share_mark_tracking_request($post_id, $platform);
         
         return rest_ensure_response(array(
             'success' => true,
@@ -716,18 +735,17 @@ class EasyShare_Core_Api {
      * Check permissions for frontend track endpoint
      */
     public function check_track_permissions($request) {
-        // Basic rate limiting - allow max 10 requests per minute per IP
-        $user_ip = $this->get_user_ip();
-        $rate_limit_key = 'easy_share_rate_limit_' . md5($user_ip);
-        $current_requests = get_transient($rate_limit_key) ?: 0;
-        
-        if ($current_requests >= 10) {
-            return new WP_Error('rest_rate_limited', 'Too many requests. Please try again later.', array('status' => 429));
+        $platform = sanitize_key($request->get_param('platform'));
+        $post_id = absint($request->get_param('post_id'));
+
+        if (empty($platform) || $post_id <= 0) {
+            return new WP_Error('missing_data', __('Platform and post ID are required.', 'easy-share-solution'), array('status' => 400));
         }
-        
-        // Increment counter
-        set_transient($rate_limit_key, $current_requests + 1, 60); // 60 seconds
-        
+
+        if (!$this->easy_share_is_valid_tracking_platform($platform)) {
+            return new WP_Error('invalid_platform', __('Invalid sharing platform.', 'easy-share-solution'), array('status' => 400));
+        }
+
         return true;
     }
     

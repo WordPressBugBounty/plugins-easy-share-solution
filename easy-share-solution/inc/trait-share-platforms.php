@@ -463,6 +463,209 @@ trait Easy_Share_Platforms_Trait {
     }
 
     /**
+     * Validate an inbound tracking request before mutating share counters.
+     *
+     * @param string $platform Platform key.
+     * @param int    $post_id  Post ID.
+     * @param string $url      Shared URL.
+     * @return true|WP_Error
+     */
+    protected function easy_share_validate_tracking_request($platform, $post_id, $url = '') {
+        $platform = sanitize_key($platform);
+        $post_id = absint($post_id);
+        $url = !empty($url) ? esc_url_raw($url) : '';
+
+        if (empty($platform) || $post_id <= 0) {
+            return new WP_Error(
+                'missing_data',
+                __('Platform and post ID are required.', 'easy-share-solution'),
+                array('status' => 400)
+            );
+        }
+
+        if (!$this->easy_share_is_valid_tracking_platform($platform)) {
+            return new WP_Error(
+                'invalid_platform',
+                __('Invalid sharing platform.', 'easy-share-solution'),
+                array('status' => 400)
+            );
+        }
+
+        if (!get_post($post_id)) {
+            return new WP_Error(
+                'invalid_post',
+                __('Post not found.', 'easy-share-solution'),
+                array('status' => 404)
+            );
+        }
+
+        if (!empty($url)) {
+            if (!$this->easy_share_is_same_site_tracking_url($url)) {
+                return new WP_Error(
+                    'invalid_url',
+                    __('Tracking requests must reference a URL on this site.', 'easy-share-solution'),
+                    array('status' => 400)
+                );
+            }
+
+            $resolved_post_id = url_to_postid($url);
+            if (!empty($resolved_post_id) && absint($resolved_post_id) !== $post_id) {
+                return new WP_Error(
+                    'post_url_mismatch',
+                    __('Shared URL does not match the requested post.', 'easy-share-solution'),
+                    array('status' => 400)
+                );
+            }
+
+            if (empty($resolved_post_id)) {
+                $requested_path = untrailingslashit((string) wp_parse_url($url, PHP_URL_PATH));
+                $canonical_path = untrailingslashit((string) wp_parse_url(get_permalink($post_id), PHP_URL_PATH));
+
+                if ($requested_path !== $canonical_path) {
+                    return new WP_Error(
+                        'post_url_mismatch',
+                        __('Shared URL does not match the requested post.', 'easy-share-solution'),
+                        array('status' => 400)
+                    );
+                }
+            }
+        }
+
+        if ($this->easy_share_is_duplicate_tracking_request($post_id, $platform)) {
+            return new WP_Error(
+                'duplicate_tracking',
+                __('Share already tracked recently.', 'easy-share-solution'),
+                array('status' => 409)
+            );
+        }
+
+        return true;
+    }
+
+    /**
+     * Check whether a tracking request exceeds the per-visitor rate limit.
+     *
+     * @param int    $post_id       Post ID.
+     * @param string $platform      Platform key.
+     * @param int    $max_requests  Allowed requests in the window.
+     * @param int    $window        Rate-limit window in seconds.
+     * @return bool
+     */
+    protected function easy_share_check_tracking_rate_limit($post_id, $platform, $max_requests = 5, $window = HOUR_IN_SECONDS) {
+        $rate_limit_key = 'easy_share_track_rate_' . md5($this->easy_share_get_tracking_identity() . '|' . absint($post_id) . '|' . sanitize_key($platform));
+        $current_requests = (int) get_transient($rate_limit_key);
+
+        if ($current_requests >= $max_requests) {
+            return false;
+        }
+
+        set_transient($rate_limit_key, $current_requests + 1, $window);
+
+        return true;
+    }
+
+    /**
+     * Check whether this visitor already tracked the same post/platform recently.
+     *
+     * @param int    $post_id    Post ID.
+     * @param string $platform   Platform key.
+     * @param int    $expiration Cache lifetime in seconds.
+     * @return bool
+     */
+    protected function easy_share_is_duplicate_tracking_request($post_id, $platform, $expiration = DAY_IN_SECONDS) {
+        return (bool) get_transient($this->easy_share_get_tracking_dedupe_key($post_id, $platform, $expiration));
+    }
+
+    /**
+     * Mark a tracking request as seen for this visitor.
+     *
+     * @param int    $post_id    Post ID.
+     * @param string $platform   Platform key.
+     * @param int    $expiration Cache lifetime in seconds.
+     * @return void
+     */
+    protected function easy_share_mark_tracking_request($post_id, $platform, $expiration = DAY_IN_SECONDS) {
+        set_transient($this->easy_share_get_tracking_dedupe_key($post_id, $platform, $expiration), 1, $expiration);
+    }
+
+    /**
+     * Determine whether a platform key is valid for tracking.
+     *
+     * @param string $platform Platform key.
+     * @return bool
+     */
+    protected function easy_share_is_valid_tracking_platform($platform) {
+        return false !== $this->get_platform_data(sanitize_key($platform));
+    }
+
+    /**
+     * Determine whether a URL belongs to the current site.
+     *
+     * @param string $url URL to validate.
+     * @return bool
+     */
+    protected function easy_share_is_same_site_tracking_url($url) {
+        $url_host = wp_parse_url($url, PHP_URL_HOST);
+        $home_host = wp_parse_url(home_url('/'), PHP_URL_HOST);
+
+        if (empty($url_host) || empty($home_host)) {
+            return false;
+        }
+
+        return 0 === strcasecmp($url_host, $home_host);
+    }
+
+    /**
+     * Build a dedupe cache key for a visitor, post, and platform.
+     *
+     * @param int    $post_id    Post ID.
+     * @param string $platform   Platform key.
+     * @param int    $expiration Cache lifetime in seconds.
+     * @return string
+     */
+    protected function easy_share_get_tracking_dedupe_key($post_id, $platform, $expiration = DAY_IN_SECONDS) {
+        unset($expiration);
+
+        return 'easy_share_track_seen_' . md5($this->easy_share_get_tracking_identity() . '|' . absint($post_id) . '|' . sanitize_key($platform));
+    }
+
+    /**
+     * Build a stable per-visitor identity for tracking protections.
+     *
+     * @return string
+     */
+    protected function easy_share_get_tracking_identity() {
+        $visitor_id = '';
+
+        if (!empty($_COOKIE['easy_share_visitor'])) {
+            $visitor_id = sanitize_key(wp_unslash($_COOKIE['easy_share_visitor']));
+        }
+
+        if (empty($visitor_id)) {
+            $visitor_id = strtolower(wp_generate_password(20, false, false));
+
+            if (!headers_sent()) {
+                setcookie(
+                    'easy_share_visitor',
+                    $visitor_id,
+                    time() + MONTH_IN_SECONDS,
+                    defined('COOKIEPATH') ? COOKIEPATH : '/',
+                    defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN : '',
+                    is_ssl(),
+                    true
+                );
+            }
+
+            $_COOKIE['easy_share_visitor'] = $visitor_id;
+        }
+
+        $user_ip = method_exists($this, 'get_user_ip') ? $this->get_user_ip() : '0.0.0.0';
+        $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? sanitize_text_field(wp_unslash($_SERVER['HTTP_USER_AGENT'])) : '';
+
+        return $visitor_id . '|' . substr(md5($user_ip . '|' . $user_agent), 0, 12);
+    }
+
+    /**
      * Get platform icon SVG
      * 
      * @param string $platform Platform key

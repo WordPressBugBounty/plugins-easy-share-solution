@@ -1437,25 +1437,46 @@ class EasyShare_Frontend {
     public function track_share() {
         check_ajax_referer('easy_share_nonce', 'nonce');
         
-        $platform = isset($_POST['platform']) ? sanitize_text_field(wp_unslash($_POST['platform'])) : '';
+        $platform = isset($_POST['platform']) ? sanitize_key(wp_unslash($_POST['platform'])) : '';
         $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+        $url = isset($_POST['url']) ? esc_url_raw(wp_unslash($_POST['url'])) : '';
         
         if (!$platform) {
             wp_send_json_error('Invalid platform');
             return;
         }
         
-        // If post_id is 0, try to get it from URL or use homepage
+        // If post_id is 0, try to resolve it from the shared URL.
         if ($post_id === 0) {
-            $url = isset($_POST['url']) ? esc_url_raw(wp_unslash($_POST['url'])) : '';
             if ($url) {
                 $post_id = url_to_postid($url);
             }
             
-            // If still 0, track as homepage/general site share
-            if ($post_id === 0) {
-                $post_id = get_option('page_on_front') ? get_option('page_on_front') : 1;
+            if ($post_id === 0 && !empty($url) && untrailingslashit($url) === untrailingslashit(home_url('/'))) {
+                $post_id = absint(get_option('page_on_front'));
             }
+        }
+
+        $validation = $this->easy_share_validate_tracking_request($platform, $post_id, $url);
+        if (is_wp_error($validation)) {
+            if ('duplicate_tracking' === $validation->get_error_code()) {
+                wp_send_json_success(array(
+                    'platform' => $platform,
+                    'count' => (int) get_post_meta($post_id, '_easy_share_count_' . $platform, true),
+                    'total' => (int) get_post_meta($post_id, '_easy_share_total', true),
+                    'post_id' => $post_id,
+                    'duplicate' => true,
+                ));
+                return;
+            }
+
+            wp_send_json_error($validation->get_error_message(), (int) $validation->get_error_data('status'));
+            return;
+        }
+
+        if (!$this->easy_share_check_tracking_rate_limit($post_id, $platform)) {
+            wp_send_json_error(__('Too many tracking requests. Please try again later.', 'easy-share-solution'), 429);
+            return;
         }
         
         // Basic tracking - increment share count
@@ -1470,6 +1491,8 @@ class EasyShare_Frontend {
         
         // Save to analytics database
         $this->save_share_analytics($platform, $post_id);
+
+        $this->easy_share_mark_tracking_request($post_id, $platform);
         
         wp_send_json_success(array(
             'platform' => $platform,

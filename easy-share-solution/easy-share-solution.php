@@ -3,7 +3,7 @@
  * Plugin Name: Easy Share Solution
  * Plugin URI: https://wpthemespace.com/product/easy-share-solution/
  * Description: A share toolkit that helps you share anything. Lightweight, modern WordPress sharing plugin with 60+ platforms support
- * Version: 2.0.2
+ * Version: 2.0.3
  * Author: Noor alam
  * Author URI: https://wpthemespace.com
  * License: GPL v2 or later
@@ -11,7 +11,7 @@
  * Text Domain: easy-share-solution
  * Domain Path: /languages
  * Requires at least: 5.8
- * Tested up to: 6.8
+ * Tested up to: 7.0
  * Requires PHP: 7.4
  *
  * @package EasyShareSolution
@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
 
 
 // Define plugin constants
-define('EASY_SHARE_VERSION', '2.0.2');
+define('EASY_SHARE_VERSION', '2.0.3');
 define('EASY_SHARE_PLUGIN_FILE', __FILE__);
 define('EASY_SHARE_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('EASY_SHARE_PLUGIN_URL', plugin_dir_url(__FILE__));
